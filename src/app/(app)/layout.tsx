@@ -1,5 +1,6 @@
 import Sidebar from '@/components/nav/Sidebar'
 import BottomNav from '@/components/nav/BottomNav'
+import { Toaster } from '@/components/ui/sonner'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,6 +10,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <BottomNav className="flex md:hidden fixed bottom-0 left-0 right-0" />
+      <Toaster position="bottom-center" />
     </div>
   )
 }
