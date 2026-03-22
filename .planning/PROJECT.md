@@ -14,7 +14,11 @@ A tutor can complete their entire weekly workflow — schedule lessons, mark the
 
 <!-- Shipped and confirmed valuable. -->
 
-(None yet — ship to validate)
+- [x] Full student CRUD — add, view, edit, deactivate students with parent contact info, rates, and notes (Validated in Phase 2: Students and Scheduling)
+- [x] Lesson scheduling with single and recurring lessons (weekly recurrence for N weeks) (Validated in Phase 2)
+- [x] Week view calendar and list view for schedule with forward/backward navigation (Validated in Phase 2)
+- [x] Quick lesson status updates (completed, cancelled, no-show) without full edit (Validated in Phase 2)
+- [x] Recurring lesson editing defaults to "this lesson only" (Validated in Phase 2)
 
 ### Active
 
@@ -22,11 +26,6 @@ A tutor can complete their entire weekly workflow — schedule lessons, mark the
 
 - [ ] Password-protected login with Supabase Auth (email/password, no signup page for v1)
 - [ ] Dashboard with today's lessons, weekly counts, unpaid invoices, revenue metrics, and quick actions
-- [ ] Full student CRUD — add, view, edit, deactivate students with parent contact info, rates, and notes
-- [ ] Lesson scheduling with single and recurring lessons (weekly recurrence for N weeks)
-- [ ] Week view calendar and list view for schedule with forward/backward navigation
-- [ ] Quick lesson status updates (completed, cancelled, no-show) without full edit
-- [ ] Recurring lesson editing defaults to "this lesson only"
 - [ ] Invoice creation auto-populated from un-invoiced completed lessons, with manual line item support
 - [ ] Invoice lifecycle: draft → sent → paid, with invoice number generation (INV-0001)
 - [ ] Professional PDF invoice generation with tutor business details, line items, payment info
@@ -101,4 +100,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-22 after initialization*
+*Last updated: 2026-03-22 after Phase 2 completion — Students and Scheduling*
