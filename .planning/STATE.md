@@ -104,6 +104,12 @@ Plan: Not started
 
 None.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260322-unn | Add free-text location field to lessons | 2026-03-22 | a38edba | [260322-unn-add-free-text-location-field-to-lessons](./quick/260322-unn-add-free-text-location-field-to-lessons/) |
+
 ---
 
 ## Session Continuity
@@ -115,5 +121,5 @@ None.
 ---
 
 *State initialized: 2026-03-22*
-*Last updated: 2026-03-22 after Phase 2 human verification complete*
+*Last updated: 2026-03-22 - Completed quick task 260322-unn: Add free-text location field to lessons*
 *Stopped at: Completed 02-students-and-scheduling/02-05-PLAN.md — Phase 2 fully verified and complete*
