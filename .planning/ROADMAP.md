@@ -11,7 +11,7 @@
 ## Phases
 
 - [x] **Phase 1: Foundation** - Authenticated shell, complete DB schema with RLS, and dev seed data (completed 2026-03-22)
-- [ ] **Phase 2: Students and Scheduling** - Full student roster and lesson scheduling with calendar views
+- [x] **Phase 2: Students and Scheduling** - Full student roster and lesson scheduling with calendar views (completed 2026-03-22)
 - [ ] **Phase 3: Invoicing and Payments** - Invoice lifecycle, PDF generation, and payment tracking
 - [ ] **Phase 4: Dashboard and Revenue** - Daily summary dashboard and revenue reporting
 
@@ -53,7 +53,7 @@ Plans:
 - [x] 02-02-PLAN.md — Data layer: queries and server actions for students, lessons, and tutor profile
 - [x] 02-03-PLAN.md — Student CRUD pages and tutor profile edit (AUTH-04, STUD-01 through STUD-05)
 - [x] 02-04-PLAN.md — Schedule page: calendar + list views, lesson form drawer, status quick actions (SCHED-01 through SCHED-07)
-- [ ] 02-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
+- [x] 02-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ### Phase 3: Invoicing and Payments
 
@@ -88,7 +88,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
-| 2. Students and Scheduling | 4/5 | In Progress|  |
+| 2. Students and Scheduling | 5/5 | Complete   | 2026-03-22 |
 | 3. Invoicing and Payments | 0/? | Not started | - |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
 
