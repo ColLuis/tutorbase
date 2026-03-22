@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  console.log('[middleware] hit:', request.nextUrl.pathname)
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
@@ -25,8 +24,18 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  const { data: { user } } = await supabase.auth.getUser()
-  const isAuthenticated = !!user
+  let isAuthenticated = false
+  try {
+    if (typeof supabase.auth.getClaims === 'function') {
+      const { data } = await supabase.auth.getClaims()
+      isAuthenticated = !!data?.claims
+    } else {
+      const { data: { user } } = await supabase.auth.getUser()
+      isAuthenticated = !!user
+    }
+  } catch {
+    isAuthenticated = false
+  }
 
   const isLoginPage = request.nextUrl.pathname === '/login'
 
