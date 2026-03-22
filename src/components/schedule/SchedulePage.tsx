@@ -20,6 +20,7 @@ interface Lesson {
   status: string
   recurring_series_id: string | null
   notes: string | null
+  location: string | null
   students: { name: string } | null
 }
 
@@ -49,6 +50,7 @@ function buildEditLessonData(
   durationMinutes: number
   rate: number
   notes: string | null
+  location: string | null
 } | null {
   const lesson = lessons.find(l => l.id === lessonId)
   if (!lesson) return null
@@ -65,6 +67,7 @@ function buildEditLessonData(
     durationMinutes: lesson.duration_minutes,
     rate: lesson.rate,
     notes: lesson.notes,
+    location: lesson.location,
   }
 }
 

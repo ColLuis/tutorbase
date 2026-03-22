@@ -13,6 +13,7 @@ const LessonSchema = z.object({
   durationMinutes: z.coerce.number().int().min(15),
   rate: z.coerce.number().min(0),
   notes: z.string().optional(),
+  location: z.string().optional(),
   timezone: z.string().min(1),
 })
 
@@ -41,6 +42,7 @@ export async function createLesson(formData: FormData) {
     duration_minutes: parsed.data.durationMinutes,
     rate: parsed.data.rate,
     notes: parsed.data.notes ?? null,
+    location: parsed.data.location ?? null,
     status: 'scheduled',
   })
   if (error) return { error: error.message }
@@ -64,6 +66,7 @@ export async function createRecurringLessons(formData: FormData) {
     duration_minutes: parsed.data.durationMinutes,
     rate: parsed.data.rate,
     notes: parsed.data.notes ?? null,
+    location: parsed.data.location ?? null,
     status: 'scheduled' as const,
     recurring_series_id: seriesId,
   }))
@@ -109,6 +112,7 @@ export async function updateLesson(lessonId: string, formData: FormData) {
       duration_minutes: parsed.data.durationMinutes,
       rate: parsed.data.rate,
       notes: parsed.data.notes ?? null,
+      location: parsed.data.location ?? null,
       updated_at: new Date().toISOString(),
     })
     .eq('id', lessonId)

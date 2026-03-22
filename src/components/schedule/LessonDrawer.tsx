@@ -29,6 +29,7 @@ const LessonFormSchema = z.object({
   durationMinutes: z.string().min(1, 'Duration is required'),
   rate: z.string().min(1, 'Rate is required'),
   notes: z.string().optional(),
+  location: z.string().optional(),
 })
 
 type LessonFormValues = z.infer<typeof LessonFormSchema>
@@ -48,6 +49,7 @@ interface EditLesson {
   durationMinutes: number
   rate: number
   notes: string | null
+  location: string | null
 }
 
 interface LessonDrawerProps {
@@ -95,6 +97,7 @@ function LessonForm({
       durationMinutes: editLesson ? String(editLesson.durationMinutes) : '',
       rate: editLesson ? String(editLesson.rate) : '',
       notes: editLesson?.notes ?? '',
+      location: editLesson?.location ?? '',
     },
   })
 
@@ -128,6 +131,7 @@ function LessonForm({
     formData.append('durationMinutes', values.durationMinutes)
     formData.append('rate', values.rate)
     formData.append('notes', values.notes ?? '')
+    formData.append('location', values.location ?? '')
     formData.append('timezone', timezone)
 
     type ActionResult = { success: true } | { error: string }
@@ -314,6 +318,17 @@ function LessonForm({
           )}
         </div>
       )}
+
+      {/* Location */}
+      <div className="space-y-1">
+        <Label htmlFor="location">Location (optional)</Label>
+        <Input
+          id="location"
+          placeholder="e.g. Student's home, Library, Online"
+          className="min-h-[44px]"
+          {...form.register('location')}
+        />
+      </div>
 
       {/* Notes */}
       <div className="space-y-1">

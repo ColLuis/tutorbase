@@ -27,6 +27,7 @@ interface LessonDetailPanelProps {
     rate: number
     status: string
     notes: string | null
+    location: string | null
     students: { name: string } | null
     recurring_series_id: string | null
   }
@@ -94,6 +95,12 @@ export default function LessonDetailPanel({ lesson, timezone, onClose, onEdit }:
               <span className="text-muted-foreground">Status</span>
               <span className="font-medium capitalize">{lesson.status.replace('_', ' ')}</span>
             </div>
+            {lesson.location && (
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Location</span>
+                <span className="font-medium">{lesson.location}</span>
+              </div>
+            )}
             {lesson.recurring_series_id && (
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Recurring</span>
