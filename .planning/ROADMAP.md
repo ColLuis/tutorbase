@@ -52,7 +52,7 @@ Plans:
 - [x] 02-01-PLAN.md — Schema migration (subject + default_duration_minutes), seed update, time parsing utility
 - [x] 02-02-PLAN.md — Data layer: queries and server actions for students, lessons, and tutor profile
 - [x] 02-03-PLAN.md — Student CRUD pages and tutor profile edit (AUTH-04, STUD-01 through STUD-05)
-- [ ] 02-04-PLAN.md — Schedule page: calendar + list views, lesson form drawer, status quick actions (SCHED-01 through SCHED-07)
+- [x] 02-04-PLAN.md — Schedule page: calendar + list views, lesson form drawer, status quick actions (SCHED-01 through SCHED-07)
 - [ ] 02-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ### Phase 3: Invoicing and Payments
@@ -88,7 +88,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
-| 2. Students and Scheduling | 3/5 | In Progress|  |
+| 2. Students and Scheduling | 4/5 | In Progress|  |
 | 3. Invoicing and Payments | 0/? | Not started | - |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
 

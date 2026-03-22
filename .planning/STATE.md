@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-22T10:35:33.571Z"
+last_updated: "2026-03-22T10:35:54.465Z"
 progress:
   total_phases: 4
   completed_phases: 1
@@ -59,6 +59,7 @@ Plan: 5 of 5
 | Phase 02-students-and-scheduling P01 | 2 | 2 tasks | 3 files |
 | Phase 02-students-and-scheduling P02 | 6 | 2 tasks | 7 files |
 | Phase 02-students-and-scheduling P03 | 18 | 2 tasks | 14 files |
+| Phase 02-students-and-scheduling P04 | 9 | 2 tasks | 18 files |
 
 ## Accumulated Context
 
@@ -76,6 +77,9 @@ Plan: 5 of 5
 | zod v4 uses .issues not .errors on ZodError | API changed in zod v4; all server actions must use `parsed.error.issues[0].message` |
 | Base UI Button uses render prop for links | `@base-ui/react/button` has no `asChild` — use `render={<Link href="...">text</Link>}` for polymorphic rendering |
 | StudentForm uses string Zod schema fields | zod v4 union types (`z.union([z.coerce.number(), z.literal('')])`) cause `unknown` inference with @hookform/resolvers v5; use string fields in form schema, let server action coerce |
+| @base-ui AlertDialog/Popover triggers have no asChild | @base-ui trigger components accept className/disabled directly — style with Tailwind button utilities, no asChild wrapper needed |
+| Suspense wraps SchedulePage for useSearchParams | Next.js 15 requires Suspense boundary when useSearchParams is called inside a component rendered from a Server Component |
+| LessonDrawer form fields stored as strings | react-hook-form zodResolver type conflicts with z.coerce; all form values kept as strings, parsed to numbers in FormData before server action call |
 
 ### Critical Pitfalls to Avoid
 
@@ -109,5 +113,5 @@ None.
 ---
 
 *State initialized: 2026-03-22*
-*Last updated: 2026-03-22 after 02-03 student pages completion*
-*Stopped at: Completed 02-students-and-scheduling/02-03-PLAN.md*
+*Last updated: 2026-03-22 after 02-04 schedule page completion*
+*Stopped at: Completed 02-students-and-scheduling/02-04-PLAN.md*
