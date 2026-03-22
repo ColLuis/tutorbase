@@ -32,7 +32,7 @@
   5. A developer can run the seed script and have sample data in all tables without errors
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold project, install deps, create Supabase auth infra and utility functions
+- [x] 01-01-PLAN.md — Scaffold project, install deps, create Supabase auth infra and utility functions
 - [ ] 01-02-PLAN.md — Database migration with RLS policies and seed script
 - [ ] 01-03-PLAN.md — Login page UI and responsive app shell (sidebar + bottom nav)
 

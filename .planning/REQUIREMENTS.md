@@ -10,7 +10,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Authentication
 
 - [ ] **AUTH-01**: User can log in with email and password
-- [ ] **AUTH-02**: User session persists across browser refresh
+- [x] **AUTH-02**: User session persists across browser refresh
 - [ ] **AUTH-03**: All routes except login are protected (redirect to login if unauthenticated)
 - [ ] **AUTH-04**: User can view and edit their tutor profile (name, email)
 
@@ -64,7 +64,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **INFRA-01**: Mobile-first responsive design with bottom nav (mobile) and sidebar (desktop)
 - [ ] **INFRA-02**: Row Level Security enabled on all database tables
 - [ ] **INFRA-03**: Seed script creates sample tutor, students, lessons, invoices for development
-- [ ] **INFRA-04**: All tables use TIMESTAMPTZ for date/time storage
+- [x] **INFRA-04**: All tables use TIMESTAMPTZ for date/time storage
 
 ## v2 Requirements
 
@@ -115,12 +115,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Pending |
 | INFRA-01 | Phase 1 | Pending |
 | INFRA-02 | Phase 1 | Pending |
 | INFRA-03 | Phase 1 | Pending |
-| INFRA-04 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Complete |
 | AUTH-04 | Phase 2 | Pending |
 | STUD-01 | Phase 2 | Pending |
 | STUD-02 | Phase 2 | Pending |
