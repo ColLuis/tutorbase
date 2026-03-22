@@ -16,7 +16,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Students
 
-- [ ] **STUD-01**: User can add a student with name, parent contact, subject, rate, and duration
+- [x] **STUD-01**: User can add a student with name, parent contact, subject, rate, and duration
 - [ ] **STUD-02**: User can view a list of all students with search and filter
 - [ ] **STUD-03**: User can view a student's detail page
 - [ ] **STUD-04**: User can edit a student's information
@@ -30,7 +30,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **SCHED-04**: User can view lessons in a chronological list grouped by day
 - [ ] **SCHED-05**: User can mark a lesson as completed, cancelled, or no-show via quick action
 - [ ] **SCHED-06**: User can edit a single lesson (defaults to "this lesson only" for recurring)
-- [ ] **SCHED-07**: Lessons pre-fill duration and rate from student defaults
+- [x] **SCHED-07**: Lessons pre-fill duration and rate from student defaults
 
 ### Invoicing
 
@@ -62,8 +62,8 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Infrastructure
 
 - [x] **INFRA-01**: Mobile-first responsive design with bottom nav (mobile) and sidebar (desktop)
-- [ ] **INFRA-02**: Row Level Security enabled on all database tables
-- [ ] **INFRA-03**: Seed script creates sample tutor, students, lessons, invoices for development
+- [x] **INFRA-02**: Row Level Security enabled on all database tables
+- [x] **INFRA-03**: Seed script creates sample tutor, students, lessons, invoices for development
 - [x] **INFRA-04**: All tables use TIMESTAMPTZ for date/time storage
 
 ## v2 Requirements
@@ -118,11 +118,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Complete |
 | INFRA-01 | Phase 1 | Complete |
-| INFRA-02 | Phase 1 | Pending |
-| INFRA-03 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Complete |
+| INFRA-03 | Phase 1 | Complete |
 | INFRA-04 | Phase 1 | Complete |
 | AUTH-04 | Phase 2 | Pending |
-| STUD-01 | Phase 2 | Pending |
+| STUD-01 | Phase 2 | Complete |
 | STUD-02 | Phase 2 | Pending |
 | STUD-03 | Phase 2 | Pending |
 | STUD-04 | Phase 2 | Pending |
@@ -133,7 +133,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCHED-04 | Phase 2 | Pending |
 | SCHED-05 | Phase 2 | Pending |
 | SCHED-06 | Phase 2 | Pending |
-| SCHED-07 | Phase 2 | Pending |
+| SCHED-07 | Phase 2 | Complete |
 | INV-01 | Phase 3 | Pending |
 | INV-02 | Phase 3 | Pending |
 | INV-03 | Phase 3 | Pending |
