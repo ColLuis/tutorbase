@@ -30,7 +30,11 @@
   3. Navigating to any protected route while unauthenticated redirects to the login page
   4. The app renders a mobile bottom nav on small screens and a sidebar on desktop
   5. A developer can run the seed script and have sample data in all tables without errors
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold project, install deps, create Supabase auth infra and utility functions
+- [ ] 01-02-PLAN.md — Database migration with RLS policies and seed script
+- [ ] 01-03-PLAN.md — Login page UI and responsive app shell (sidebar + bottom nav)
 
 ### Phase 2: Students and Scheduling
 
@@ -77,7 +81,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/? | Not started | - |
+| 1. Foundation | 0/3 | Planned | - |
 | 2. Students and Scheduling | 0/? | Not started | - |
 | 3. Invoicing and Payments | 0/? | Not started | - |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
@@ -129,4 +133,4 @@
 ---
 
 *Roadmap created: 2026-03-22*
-*Last updated: 2026-03-22 after initial creation*
+*Last updated: 2026-03-22 after Phase 1 planning*
