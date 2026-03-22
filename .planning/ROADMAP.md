@@ -50,7 +50,7 @@ Plans:
 **Plans**: 5 plans
 Plans:
 - [x] 02-01-PLAN.md — Schema migration (subject + default_duration_minutes), seed update, time parsing utility
-- [ ] 02-02-PLAN.md — Data layer: queries and server actions for students, lessons, and tutor profile
+- [x] 02-02-PLAN.md — Data layer: queries and server actions for students, lessons, and tutor profile
 - [ ] 02-03-PLAN.md — Student CRUD pages and tutor profile edit (AUTH-04, STUD-01 through STUD-05)
 - [ ] 02-04-PLAN.md — Schedule page: calendar + list views, lesson form drawer, status quick actions (SCHED-01 through SCHED-07)
 - [ ] 02-05-PLAN.md — Human verify checkpoint: end-to-end functional verification

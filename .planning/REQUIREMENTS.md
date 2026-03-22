@@ -12,24 +12,24 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **AUTH-01**: User can log in with email and password
 - [x] **AUTH-02**: User session persists across browser refresh
 - [x] **AUTH-03**: All routes except login are protected (redirect to login if unauthenticated)
-- [ ] **AUTH-04**: User can view and edit their tutor profile (name, email)
+- [x] **AUTH-04**: User can view and edit their tutor profile (name, email)
 
 ### Students
 
 - [x] **STUD-01**: User can add a student with name, parent contact, subject, rate, and duration
-- [ ] **STUD-02**: User can view a list of all students with search and filter
-- [ ] **STUD-03**: User can view a student's detail page
-- [ ] **STUD-04**: User can edit a student's information
-- [ ] **STUD-05**: User can deactivate a student (soft delete)
+- [x] **STUD-02**: User can view a list of all students with search and filter
+- [x] **STUD-03**: User can view a student's detail page
+- [x] **STUD-04**: User can edit a student's information
+- [x] **STUD-05**: User can deactivate a student (soft delete)
 
 ### Scheduling
 
-- [ ] **SCHED-01**: User can create a single lesson for a student with date, time, duration, and rate
-- [ ] **SCHED-02**: User can create recurring weekly lessons for N weeks (pre-generated)
+- [x] **SCHED-01**: User can create a single lesson for a student with date, time, duration, and rate
+- [x] **SCHED-02**: User can create recurring weekly lessons for N weeks (pre-generated)
 - [ ] **SCHED-03**: User can view lessons in a weekly calendar grid
 - [ ] **SCHED-04**: User can view lessons in a chronological list grouped by day
-- [ ] **SCHED-05**: User can mark a lesson as completed, cancelled, or no-show via quick action
-- [ ] **SCHED-06**: User can edit a single lesson (defaults to "this lesson only" for recurring)
+- [x] **SCHED-05**: User can mark a lesson as completed, cancelled, or no-show via quick action
+- [x] **SCHED-06**: User can edit a single lesson (defaults to "this lesson only" for recurring)
 - [x] **SCHED-07**: Lessons pre-fill duration and rate from student defaults
 
 ### Invoicing
@@ -121,18 +121,18 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 1 | Complete |
 | INFRA-04 | Phase 1 | Complete |
-| AUTH-04 | Phase 2 | Pending |
+| AUTH-04 | Phase 2 | Complete |
 | STUD-01 | Phase 2 | Complete |
-| STUD-02 | Phase 2 | Pending |
-| STUD-03 | Phase 2 | Pending |
-| STUD-04 | Phase 2 | Pending |
-| STUD-05 | Phase 2 | Pending |
-| SCHED-01 | Phase 2 | Pending |
-| SCHED-02 | Phase 2 | Pending |
+| STUD-02 | Phase 2 | Complete |
+| STUD-03 | Phase 2 | Complete |
+| STUD-04 | Phase 2 | Complete |
+| STUD-05 | Phase 2 | Complete |
+| SCHED-01 | Phase 2 | Complete |
+| SCHED-02 | Phase 2 | Complete |
 | SCHED-03 | Phase 2 | Pending |
 | SCHED-04 | Phase 2 | Pending |
-| SCHED-05 | Phase 2 | Pending |
-| SCHED-06 | Phase 2 | Pending |
+| SCHED-05 | Phase 2 | Complete |
+| SCHED-06 | Phase 2 | Complete |
 | SCHED-07 | Phase 2 | Complete |
 | INV-01 | Phase 3 | Pending |
 | INV-02 | Phase 3 | Pending |

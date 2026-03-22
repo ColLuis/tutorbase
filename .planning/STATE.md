@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-22T10:12:18.466Z"
+last_updated: "2026-03-22T10:21:57.013Z"
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 8
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # Project State: TutorBase
@@ -30,7 +30,7 @@ progress:
 ## Current Position
 
 Phase: 02 (students-and-scheduling) — EXECUTING
-Plan: 2 of 5
+Plan: 3 of 5
 
 ## Phase Summary
 
@@ -57,6 +57,7 @@ Plan: 2 of 5
 | Phase 01-foundation P03 | 2 | 2 tasks | 7 files |
 | Phase 01-foundation P02 | 4 | 2 tasks | 3 files |
 | Phase 02-students-and-scheduling P01 | 2 | 2 tasks | 3 files |
+| Phase 02-students-and-scheduling P02 | 6 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,8 @@ Plan: 2 of 5
 | PostgreSQL sequence for invoice numbers | `invoice_number_seq` prevents race conditions; never derive from MAX() in application code |
 | All timestamps as TIMESTAMPTZ | UTC storage; convert to `tutors.timezone` on display using date-fns-tz |
 | Recurring edit defaults to "this lesson only" | Simpler default; avoids complex cascade edits |
+| database.types.ts hand-maintained until Supabase connected | Stub placeholder typed tables as `never`; full schema required for TypeScript-correct mutations |
+| zod v4 uses .issues not .errors on ZodError | API changed in zod v4; all server actions must use `parsed.error.issues[0].message` |
 
 ### Critical Pitfalls to Avoid
 
@@ -103,4 +106,5 @@ None.
 ---
 
 *State initialized: 2026-03-22*
-*Last updated: 2026-03-22 after roadmap creation*
+*Last updated: 2026-03-22 after 02-02 data layer completion*
+*Stopped at: Completed 02-students-and-scheduling/02-02-PLAN.md*
