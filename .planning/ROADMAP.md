@@ -10,7 +10,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: Foundation** - Authenticated shell, complete DB schema with RLS, and dev seed data
+- [x] **Phase 1: Foundation** - Authenticated shell, complete DB schema with RLS, and dev seed data (completed 2026-03-22)
 - [ ] **Phase 2: Students and Scheduling** - Full student roster and lesson scheduling with calendar views
 - [ ] **Phase 3: Invoicing and Payments** - Invoice lifecycle, PDF generation, and payment tracking
 - [ ] **Phase 4: Dashboard and Revenue** - Daily summary dashboard and revenue reporting
@@ -33,8 +33,8 @@
 **Plans**: 3 plans
 Plans:
 - [x] 01-01-PLAN.md — Scaffold project, install deps, create Supabase auth infra and utility functions
-- [ ] 01-02-PLAN.md — Database migration with RLS policies and seed script
-- [ ] 01-03-PLAN.md — Login page UI and responsive app shell (sidebar + bottom nav)
+- [x] 01-02-PLAN.md — Database migration with RLS policies and seed script
+- [x] 01-03-PLAN.md — Login page UI and responsive app shell (sidebar + bottom nav)
 
 ### Phase 2: Students and Scheduling
 
@@ -81,7 +81,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/3 | Planned | - |
+| 1. Foundation | 3/3 | Complete   | 2026-03-22 |
 | 2. Students and Scheduling | 0/? | Not started | - |
 | 3. Invoicing and Payments | 0/? | Not started | - |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
