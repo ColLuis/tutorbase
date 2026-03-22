@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-22T10:21:57.013Z"
+last_updated: "2026-03-22T10:35:33.571Z"
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 8
-  completed_plans: 5
+  completed_plans: 7
 ---
 
 # Project State: TutorBase
@@ -30,7 +30,7 @@ progress:
 ## Current Position
 
 Phase: 02 (students-and-scheduling) — EXECUTING
-Plan: 3 of 5
+Plan: 5 of 5
 
 ## Phase Summary
 
@@ -58,6 +58,7 @@ Plan: 3 of 5
 | Phase 01-foundation P02 | 4 | 2 tasks | 3 files |
 | Phase 02-students-and-scheduling P01 | 2 | 2 tasks | 3 files |
 | Phase 02-students-and-scheduling P02 | 6 | 2 tasks | 7 files |
+| Phase 02-students-and-scheduling P03 | 18 | 2 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,8 @@ Plan: 3 of 5
 | Recurring edit defaults to "this lesson only" | Simpler default; avoids complex cascade edits |
 | database.types.ts hand-maintained until Supabase connected | Stub placeholder typed tables as `never`; full schema required for TypeScript-correct mutations |
 | zod v4 uses .issues not .errors on ZodError | API changed in zod v4; all server actions must use `parsed.error.issues[0].message` |
+| Base UI Button uses render prop for links | `@base-ui/react/button` has no `asChild` — use `render={<Link href="...">text</Link>}` for polymorphic rendering |
+| StudentForm uses string Zod schema fields | zod v4 union types (`z.union([z.coerce.number(), z.literal('')])`) cause `unknown` inference with @hookform/resolvers v5; use string fields in form schema, let server action coerce |
 
 ### Critical Pitfalls to Avoid
 
@@ -106,5 +109,5 @@ None.
 ---
 
 *State initialized: 2026-03-22*
-*Last updated: 2026-03-22 after 02-02 data layer completion*
-*Stopped at: Completed 02-students-and-scheduling/02-02-PLAN.md*
+*Last updated: 2026-03-22 after 02-03 student pages completion*
+*Stopped at: Completed 02-students-and-scheduling/02-03-PLAN.md*
