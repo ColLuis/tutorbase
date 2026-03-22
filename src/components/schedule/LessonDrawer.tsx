@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
@@ -345,6 +346,7 @@ function LessonForm({
 
 export default function LessonDrawer({ open, onOpenChange, students, timezone, editLesson }: LessonDrawerProps) {
   const title = editLesson ? 'Edit Lesson' : 'New Lesson'
+  const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const handleSuccess = () => {
     onOpenChange(false)
@@ -359,31 +361,27 @@ export default function LessonDrawer({ open, onOpenChange, students, timezone, e
     />
   )
 
-  return (
-    <>
-      {/* Mobile: bottom Drawer (D-04, Pattern 7) */}
-      <div className="flex md:hidden">
-        <Drawer open={open} onOpenChange={onOpenChange}>
-          <DrawerContent className="max-h-[90vh] overflow-y-auto">
-            <DrawerHeader>
-              <DrawerTitle>{title}</DrawerTitle>
-            </DrawerHeader>
-            {formContent}
-          </DrawerContent>
-        </Drawer>
-      </div>
+  if (isDesktop) {
+    return (
+      <Sheet open={open} onOpenChange={onOpenChange}>
+        <SheetContent side="right" className="w-full sm:max-w-md overflow-y-auto">
+          <SheetHeader>
+            <SheetTitle>{title}</SheetTitle>
+          </SheetHeader>
+          {formContent}
+        </SheetContent>
+      </Sheet>
+    )
+  }
 
-      {/* Desktop: side Sheet (D-04, Pattern 7) */}
-      <div className="hidden md:flex">
-        <Sheet open={open} onOpenChange={onOpenChange}>
-          <SheetContent side="right" className="w-full sm:max-w-md overflow-y-auto">
-            <SheetHeader>
-              <SheetTitle>{title}</SheetTitle>
-            </SheetHeader>
-            {formContent}
-          </SheetContent>
-        </Sheet>
-      </div>
-    </>
+  return (
+    <Drawer open={open} onOpenChange={onOpenChange}>
+      <DrawerContent className="max-h-[90vh] overflow-y-auto">
+        <DrawerHeader>
+          <DrawerTitle>{title}</DrawerTitle>
+        </DrawerHeader>
+        {formContent}
+      </DrawerContent>
+    </Drawer>
   )
 }
