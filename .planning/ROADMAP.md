@@ -47,7 +47,13 @@ Plans:
   3. Tutor can create a single lesson or a recurring weekly series, and new lessons pre-fill the student's default rate and duration
   4. Tutor can view their schedule in both a week calendar grid and a chronological list, and navigate forward and backward by week
   5. Tutor can tap a lesson and mark it completed, cancelled, or no-show without opening a full edit form
-**Plans**: TBD
+**Plans**: 5 plans
+Plans:
+- [ ] 02-01-PLAN.md — Schema migration (subject + default_duration_minutes), seed update, time parsing utility
+- [ ] 02-02-PLAN.md — Data layer: queries and server actions for students, lessons, and tutor profile
+- [ ] 02-03-PLAN.md — Student CRUD pages and tutor profile edit (AUTH-04, STUD-01 through STUD-05)
+- [ ] 02-04-PLAN.md — Schedule page: calendar + list views, lesson form drawer, status quick actions (SCHED-01 through SCHED-07)
+- [ ] 02-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ### Phase 3: Invoicing and Payments
 
@@ -82,7 +88,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
-| 2. Students and Scheduling | 0/? | Not started | - |
+| 2. Students and Scheduling | 0/5 | Not started | - |
 | 3. Invoicing and Payments | 0/? | Not started | - |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
 
@@ -133,4 +139,4 @@ Plans:
 ---
 
 *Roadmap created: 2026-03-22*
-*Last updated: 2026-03-22 after Phase 1 planning*
+*Last updated: 2026-03-22 after Phase 2 planning*
