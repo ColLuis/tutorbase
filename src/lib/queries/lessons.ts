@@ -6,7 +6,7 @@ export async function getLessonsForWeek(tutorId: string, weekStart: Date) {
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('lessons')
-    .select('id, student_id, scheduled_at, duration_minutes, rate, status, recurring_series_id, notes, students(name)')
+    .select('id, student_id, scheduled_at, duration_minutes, rate, status, recurring_series_id, notes, location, students(name)')
     .eq('tutor_id', tutorId)
     .gte('scheduled_at', weekStart.toISOString())
     .lte('scheduled_at', weekEnd.toISOString())
