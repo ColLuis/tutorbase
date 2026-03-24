@@ -36,12 +36,16 @@ export default function CreateInvoiceForm({
 }: CreateInvoiceFormProps) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
-  const [pendingStatus, setPendingStatus] = useState<'draft' | 'sent' | null>(null)
 
   // All lessons selected by default
   const [selectedIds, setSelectedIds] = useState<Set<string>>(
     new Set(lessons.map((l) => l.id))
   )
+
+  // Per-lesson overrides for rate and duration
+  const [overrides, setOverrides] = useState<
+    Record<string, { rate?: number; duration?: number }>
+  >({})
 
   const today = format(new Date(), 'yyyy-MM-dd')
   const defaultDueDate = format(addDays(new Date(), 14), 'yyyy-MM-dd')
@@ -62,8 +66,23 @@ export default function CreateInvoiceForm({
     })
   }
 
+  function setOverride(id: string, field: 'rate' | 'duration', value: number) {
+    setOverrides((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], [field]: value },
+    }))
+  }
+
+  function getRate(lesson: Lesson): number {
+    return overrides[lesson.id]?.rate ?? Number(lesson.rate)
+  }
+
+  function getDuration(lesson: Lesson): number {
+    return overrides[lesson.id]?.duration ?? lesson.duration_minutes
+  }
+
   function calcAmount(lesson: Lesson): number {
-    return (lesson.duration_minutes / 60) * Number(lesson.rate)
+    return (getDuration(lesson) / 60) * getRate(lesson)
   }
 
   const subtotal = lessons
@@ -76,11 +95,23 @@ export default function CreateInvoiceForm({
       return
     }
 
-    setPendingStatus(status)
     startTransition(async () => {
+      // Build per-lesson overrides JSON: { lessonId: { rate, duration } }
+      const lessonOverrides: Record<string, { rate: number; duration: number }> = {}
+      for (const id of selectedIds) {
+        const lesson = lessons.find((l) => l.id === id)
+        if (lesson) {
+          lessonOverrides[id] = {
+            rate: getRate(lesson),
+            duration: getDuration(lesson),
+          }
+        }
+      }
+
       const formData = new FormData()
       formData.append('studentId', studentId)
       formData.append('lessonIds', Array.from(selectedIds).join(','))
+      formData.append('lessonOverrides', JSON.stringify(lessonOverrides))
       formData.append('issuedDate', issuedDate)
       formData.append('dueDate', dueDate)
       if (notes.trim()) formData.append('notes', notes.trim())
@@ -90,9 +121,8 @@ export default function CreateInvoiceForm({
 
       if ('error' in result) {
         toast.error(result.error)
-        setPendingStatus(null)
       } else {
-        toast.success(status === 'draft' ? 'Invoice saved as draft' : 'Invoice sent')
+        toast.success('Invoice created')
         router.push('/invoices/' + result.invoiceId)
       }
     })
@@ -107,32 +137,63 @@ export default function CreateInvoiceForm({
           {lessons.map((lesson) => {
             const amount = calcAmount(lesson)
             const isChecked = selectedIds.has(lesson.id)
+            const rate = getRate(lesson)
+            const duration = getDuration(lesson)
             return (
-              <label
+              <div
                 key={lesson.id}
-                className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer min-h-[44px] transition-colors ${
+                className={`rounded-lg border transition-colors ${
                   isChecked ? 'border-primary bg-primary/5' : 'border-border bg-card'
                 }`}
               >
-                <input
-                  type="checkbox"
-                  className="mt-1 h-4 w-4 rounded border-border accent-primary"
-                  checked={isChecked}
-                  onChange={() => toggleLesson(lesson.id)}
-                  aria-label={`Select lesson on ${formatShortDate(lesson.scheduled_at, timezone)}`}
-                />
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-sm">
-                    {formatShortDate(lesson.scheduled_at, timezone)}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {lesson.duration_minutes} min &middot; {formatCurrency(Number(lesson.rate))}/hr
-                  </p>
-                </div>
-                <span className="text-sm font-medium tabular-nums shrink-0">
-                  {formatCurrency(amount)}
-                </span>
-              </label>
+                <label className="flex items-start gap-3 p-3 cursor-pointer min-h-[44px]">
+                  <input
+                    type="checkbox"
+                    className="mt-1 h-4 w-4 rounded border-border accent-primary"
+                    checked={isChecked}
+                    onChange={() => toggleLesson(lesson.id)}
+                    aria-label={`Select lesson on ${formatShortDate(lesson.scheduled_at, timezone)}`}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm">
+                      {formatShortDate(lesson.scheduled_at, timezone)}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {duration} min &middot; {formatCurrency(rate)}/hr
+                    </p>
+                  </div>
+                  <span className="text-sm font-medium tabular-nums shrink-0">
+                    {formatCurrency(amount)}
+                  </span>
+                </label>
+                {isChecked && (
+                  <div className="flex gap-3 px-3 pb-3 pt-0">
+                    <div className="flex-1 space-y-1">
+                      <Label className="text-xs text-muted-foreground">Duration (min)</Label>
+                      <Input
+                        type="number"
+                        min={1}
+                        value={duration}
+                        onChange={(e) => setOverride(lesson.id, 'duration', Number(e.target.value))}
+                        className="h-9"
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <Label className="text-xs text-muted-foreground">Rate ($/hr)</Label>
+                      <Input
+                        type="number"
+                        min={0}
+                        step={0.01}
+                        value={rate}
+                        onChange={(e) => setOverride(lesson.id, 'rate', Number(e.target.value))}
+                        className="h-9"
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
             )
           })}
         </div>
@@ -188,20 +249,11 @@ export default function CreateInvoiceForm({
       <div className="flex flex-col sm:flex-row gap-3 pt-2">
         <Button
           type="button"
-          variant="outline"
           disabled={isPending}
           className="w-full sm:w-auto min-h-[44px]"
           onClick={() => handleSubmit('draft')}
         >
-          {isPending && pendingStatus === 'draft' ? 'Saving...' : 'Save Draft'}
-        </Button>
-        <Button
-          type="button"
-          disabled={isPending}
-          className="w-full sm:w-auto min-h-[44px]"
-          onClick={() => handleSubmit('sent')}
-        >
-          {isPending && pendingStatus === 'sent' ? 'Sending...' : 'Send Invoice'}
+          {isPending ? 'Creating...' : 'Create Invoice'}
         </Button>
       </div>
     </div>

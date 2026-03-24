@@ -8,6 +8,7 @@ import { createClient } from '@/lib/supabase/server'
 const CreateInvoiceSchema = z.object({
   studentId: z.string().uuid('Invalid student ID'),
   lessonIds: z.string().min(1, 'At least one lesson is required'),
+  lessonOverrides: z.string().optional(),
   issuedDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Issued date must be YYYY-MM-DD'),
   dueDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Due date must be YYYY-MM-DD'),
   notes: z.string().optional(),
@@ -33,7 +34,13 @@ export async function createInvoice(formData: FormData) {
   const parsed = CreateInvoiceSchema.safeParse(Object.fromEntries(formData))
   if (!parsed.success) return { error: parsed.error.issues[0].message }
 
-  const { studentId, lessonIds, issuedDate, dueDate, notes, status } = parsed.data
+  const { studentId, lessonIds, lessonOverrides: overridesJson, issuedDate, dueDate, notes, status } = parsed.data
+
+  // Parse per-lesson overrides: { lessonId: { rate, duration } }
+  let overrides: Record<string, { rate: number; duration: number }> = {}
+  if (overridesJson) {
+    try { overrides = JSON.parse(overridesJson) } catch { /* use DB values */ }
+  }
 
   // Parse and validate lesson IDs
   const lessonIdList = lessonIds.split(',').map(id => id.trim()).filter(Boolean)
@@ -54,15 +61,21 @@ export async function createInvoice(formData: FormData) {
   if (lessonsError) return { error: lessonsError.message }
   if (!lessons || lessons.length === 0) return { error: 'No matching lessons found' }
 
-  // Get next invoice number from DB sequence
-  const { data: invoiceNumber, error: seqError } = await supabase.rpc('get_next_invoice_number')
-  if (seqError) return { error: seqError.message }
+  // Generate next invoice number from existing count
+  const { count: invoiceCount, error: countError } = await supabase
+    .from('invoices')
+    .select('*', { count: 'exact', head: true })
+    .eq('tutor_id', tutorId)
+  if (countError) return { error: countError.message }
+  const invoiceNumber = `INV-${String((invoiceCount ?? 0) + 1).padStart(4, '0')}`
 
-  // Calculate subtotal
-  const lessonAmounts = lessons.map(lesson => ({
-    ...lesson,
-    amount: (lesson.duration_minutes / 60) * Number(lesson.rate),
-  }))
+  // Calculate subtotal using overrides if provided
+  const lessonAmounts = lessons.map(lesson => {
+    const o = overrides[lesson.id]
+    const duration = o?.duration ?? lesson.duration_minutes
+    const rate = o?.rate ?? Number(lesson.rate)
+    return { ...lesson, duration_used: duration, rate_used: rate, amount: (duration / 60) * rate }
+  })
   const subtotal = lessonAmounts.reduce((sum, l) => sum + l.amount, 0)
   const total = subtotal // No tax in v1
 
@@ -85,13 +98,13 @@ export async function createInvoice(formData: FormData) {
 
   if (invoiceError) return { error: invoiceError.message }
 
-  // Insert invoice_items — one per lesson
+  // Insert invoice_items — one per lesson (using overridden values)
   const invoiceItems = lessonAmounts.map(lesson => ({
     invoice_id: newInvoice.id,
     tutor_id: tutorId,
-    description: `${format(new Date(lesson.scheduled_at), 'dd MMM yyyy')} -- ${lesson.duration_minutes} min lesson`,
+    description: `${format(new Date(lesson.scheduled_at), 'dd MMM yyyy')} -- ${lesson.duration_used} min lesson`,
     quantity: 1,
-    unit_price: Number(lesson.rate),
+    unit_price: lesson.rate_used,
     amount: lesson.amount,
     lesson_id: lesson.id,
   }))
@@ -112,6 +125,78 @@ export async function createInvoice(formData: FormData) {
   revalidatePath('/students/' + studentId)
 
   return { success: true, invoiceId: newInvoice.id }
+}
+
+const UpdateInvoiceSchema = z.object({
+  invoiceId: z.string().uuid('Invalid invoice ID'),
+  issuedDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Issued date must be YYYY-MM-DD'),
+  dueDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Due date must be YYYY-MM-DD'),
+  notes: z.string().optional(),
+  items: z.string().min(1, 'Items JSON is required'),
+})
+
+export async function updateInvoice(formData: FormData) {
+  const { tutorId } = await verifySession()
+  const parsed = UpdateInvoiceSchema.safeParse(Object.fromEntries(formData))
+  if (!parsed.success) return { error: parsed.error.issues[0].message }
+
+  const { invoiceId, issuedDate, dueDate, notes, items: itemsJson } = parsed.data
+
+  let items: { id: string; description: string; quantity: number; unit_price: number; amount: number }[]
+  try { items = JSON.parse(itemsJson) } catch { return { error: 'Invalid items data' } }
+
+  if (items.length === 0) return { error: 'At least one line item is required' }
+
+  const supabase = await createClient()
+
+  // Verify ownership
+  const { data: invoice, error: fetchError } = await supabase
+    .from('invoices')
+    .select('id')
+    .eq('id', invoiceId)
+    .eq('tutor_id', tutorId)
+    .single()
+
+  if (fetchError || !invoice) return { error: 'Invoice not found' }
+
+  const subtotal = items.reduce((sum, item) => sum + item.amount, 0)
+
+  // Update invoice header
+  const { error: updateError } = await supabase
+    .from('invoices')
+    .update({
+      issued_date: issuedDate,
+      due_date: dueDate,
+      subtotal,
+      total: subtotal,
+      notes: notes ?? null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', invoiceId)
+    .eq('tutor_id', tutorId)
+
+  if (updateError) return { error: updateError.message }
+
+  // Update each line item
+  for (const item of items) {
+    const { error } = await supabase
+      .from('invoice_items')
+      .update({
+        description: item.description,
+        quantity: item.quantity,
+        unit_price: item.unit_price,
+        amount: item.amount,
+      })
+      .eq('id', item.id)
+      .eq('invoice_id', invoiceId)
+
+    if (error) return { error: error.message }
+  }
+
+  revalidatePath('/invoices')
+  revalidatePath('/invoices/' + invoiceId)
+
+  return { success: true }
 }
 
 export async function sendInvoice(formData: FormData) {
@@ -189,9 +274,13 @@ export async function markInvoicePaid(formData: FormData) {
 
   if (updateError) return { error: updateError.message }
 
-  // Get next receipt number from DB sequence
-  const { data: receiptNumber, error: seqError } = await supabase.rpc('get_next_receipt_number')
-  if (seqError) return { error: seqError.message }
+  // Generate next receipt number from existing count
+  const { count: receiptCount, error: rcountError } = await supabase
+    .from('receipts')
+    .select('*', { count: 'exact', head: true })
+    .eq('tutor_id', tutorId)
+  if (rcountError) return { error: rcountError.message }
+  const receiptNumber = `REC-${String((receiptCount ?? 0) + 1).padStart(4, '0')}`
 
   // Insert receipt record
   const { error: receiptError } = await supabase.from('receipts').insert({

@@ -79,7 +79,7 @@ export default function InvoiceDetail({ invoice, pdfData, invoiceId }: InvoiceDe
       if (result?.error) {
         toast.error(result.error)
       } else {
-        toast.success('Invoice sent')
+        toast.success('Invoice marked as sent')
       }
     })
   }
@@ -206,8 +206,11 @@ export default function InvoiceDetail({ invoice, pdfData, invoiceId }: InvoiceDe
               disabled={isPending}
               className="min-h-[44px]"
             >
-              {isPending ? 'Sending...' : 'Send Invoice'}
+              {isPending ? 'Updating...' : 'Mark as Sent'}
             </Button>
+            <Link href={`/invoices/${invoiceId}/edit`}>
+              <Button variant="outline" className="min-h-[44px]">Edit</Button>
+            </Link>
             <DeleteDraftButton invoiceId={invoiceId} />
             <a
               href={`/api/invoices/${invoiceId}/pdf`}
@@ -230,6 +233,9 @@ export default function InvoiceDetail({ invoice, pdfData, invoiceId }: InvoiceDe
               >
                 {showMarkPaid ? 'Cancel' : 'Mark as Paid'}
               </Button>
+              <Link href={`/invoices/${invoiceId}/edit`}>
+                <Button variant="outline" className="min-h-[44px]">Edit</Button>
+              </Link>
               <a
                 href={`/api/invoices/${invoiceId}/pdf`}
                 className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground min-h-[44px]"
@@ -244,13 +250,18 @@ export default function InvoiceDetail({ invoice, pdfData, invoiceId }: InvoiceDe
 
         {/* Paid actions */}
         {invoice.status === 'paid' && (
-          <a
-            href={`/api/invoices/${invoiceId}/pdf`}
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground min-h-[44px]"
-            download
-          >
-            Download PDF
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <Link href={`/invoices/${invoiceId}/edit`}>
+              <Button variant="outline" className="min-h-[44px]">Edit</Button>
+            </Link>
+            <a
+              href={`/api/invoices/${invoiceId}/pdf`}
+              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground min-h-[44px]"
+              download
+            >
+              Download PDF
+            </a>
+          </div>
         )}
       </div>
 
