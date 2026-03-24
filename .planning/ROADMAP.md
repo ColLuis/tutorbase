@@ -66,7 +66,13 @@ Plans:
   3. Tutor can set issue and due dates, save as draft, or finalise (status moves to sent), and view all invoices filtered by status
   4. Tutor can download a professional PDF of the invoice showing their business details, ABN, line items, totals, and bank payment info
   5. Tutor can mark an invoice as paid with a payment date and method, which auto-generates a receipt record
-**Plans**: TBD
+**Plans**: 5 plans
+Plans:
+- [ ] 03-01-PLAN.md — Install @react-pdf/renderer, DB migration for numbering functions, invoice data layer (queries + actions)
+- [ ] 03-02-PLAN.md — PDF generation: InvoicePDF document component, Route Handler, and in-browser preview
+- [ ] 03-03-PLAN.md — Invoice creation flow: student detail entry point and full-page create invoice form
+- [ ] 03-04-PLAN.md — Invoice list page with status filtering, detail page with PDF preview, mark paid, and delete draft
+- [ ] 03-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ### Phase 4: Dashboard and Revenue
 
@@ -89,7 +95,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
 | 2. Students and Scheduling | 5/5 | Complete   | 2026-03-22 |
-| 3. Invoicing and Payments | 0/? | Not started | - |
+| 3. Invoicing and Payments | 0/5 | In progress | - |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
 
 ---
@@ -139,4 +145,4 @@ Plans:
 ---
 
 *Roadmap created: 2026-03-22*
-*Last updated: 2026-03-22 after Phase 2 planning*
+*Last updated: 2026-03-24 after Phase 3 planning*
