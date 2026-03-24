@@ -69,8 +69,8 @@ Plans:
 **Plans**: 5 plans
 Plans:
 - [x] 03-01-PLAN.md — Install @react-pdf/renderer, DB migration for numbering functions, invoice data layer (queries + actions)
-- [ ] 03-02-PLAN.md — PDF generation: InvoicePDF document component, Route Handler, and in-browser preview
-- [ ] 03-03-PLAN.md — Invoice creation flow: student detail entry point and full-page create invoice form
+- [x] 03-02-PLAN.md — PDF generation: InvoicePDF document component, Route Handler, and in-browser preview
+- [x] 03-03-PLAN.md — Invoice creation flow: student detail entry point and full-page create invoice form
 - [ ] 03-04-PLAN.md — Invoice list page with status filtering, detail page with PDF preview, mark paid, and delete draft
 - [ ] 03-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
@@ -95,7 +95,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
 | 2. Students and Scheduling | 5/5 | Complete   | 2026-03-22 |
-| 3. Invoicing and Payments | 1/5 | In Progress|  |
+| 3. Invoicing and Payments | 3/5 | In Progress|  |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
 
 ---

@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-24T10:13:02.495Z"
+last_updated: "2026-03-24T10:20:12.617Z"
 progress:
   total_phases: 4
   completed_phases: 2
   total_plans: 13
-  completed_plans: 9
+  completed_plans: 11
 ---
 
 # Project State: TutorBase
@@ -30,7 +30,7 @@ progress:
 ## Current Position
 
 Phase: 03 (invoicing-and-payments) — EXECUTING
-Plan: 2 of 5
+Plan: 4 of 5
 
 ## Phase Summary
 
@@ -62,6 +62,8 @@ Plan: 2 of 5
 | Phase 02-students-and-scheduling P04 | 9 | 2 tasks | 18 files |
 | Phase 02-students-and-scheduling P05 | 0 | 1 tasks | 1 files |
 | Phase 03-invoicing-and-payments P01 | 3 | 2 tasks | 6 files |
+| Phase 03-invoicing-and-payments P02 | 4 | 2 tasks | 3 files |
+| Phase 03-invoicing-and-payments P03 | 4 | 1 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -83,6 +85,8 @@ Plan: 2 of 5
 | Suspense wraps SchedulePage for useSearchParams | Next.js 15 requires Suspense boundary when useSearchParams is called inside a component rendered from a Server Component |
 | LessonDrawer form fields stored as strings | react-hook-form zodResolver type conflicts with z.coerce; all form values kept as strings, parsed to numbers in FormData before server action call |
 | useMediaQuery for portal component branching | Drawer and Sheet are both portal components — CSS display:none does not suppress their mount; conditionally render only one via useMediaQuery hook |
+| renderToBuffer cast to any for @react-pdf/renderer | DocumentProps type does not match FunctionComponentElement; runtime works correctly — cast avoids TS error without altering behaviour |
+| Buffer cast to unknown as BodyInit in Route Handlers | Node.js Buffer not directly assignable to Web API BodyInit in TS strict mode; Next.js handles Buffer correctly at runtime |
 
 ### Critical Pitfalls to Avoid
 
@@ -122,5 +126,5 @@ None.
 ---
 
 *State initialized: 2026-03-22*
-*Last updated: 2026-03-22 - Completed quick task 260322-unn: Add free-text location field to lessons*
-*Stopped at: Completed 02-students-and-scheduling/02-05-PLAN.md — Phase 2 fully verified and complete*
+*Last updated: 2026-03-24 - Completed 03-02-PLAN.md: PDF generation layer*
+*Stopped at: Completed 03-invoicing-and-payments/03-02-PLAN.md — PDF document component, Route Handler, and in-browser preview complete*
