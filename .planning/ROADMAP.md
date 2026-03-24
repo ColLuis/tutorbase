@@ -72,7 +72,7 @@ Plans:
 - [x] 03-02-PLAN.md — PDF generation: InvoicePDF document component, Route Handler, and in-browser preview
 - [x] 03-03-PLAN.md — Invoice creation flow: student detail entry point and full-page create invoice form
 - [x] 03-04-PLAN.md — Invoice list page with status filtering, detail page with PDF preview, mark paid, and delete draft
-- [ ] 03-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
+- [x] 03-05-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ### Phase 4: Dashboard and Revenue
 

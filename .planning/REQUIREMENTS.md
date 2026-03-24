@@ -39,7 +39,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **INV-03**: User can set issue date and due date on an invoice
 - [x] **INV-04**: User can save invoice as draft or finalise (sets status to sent)
 - [x] **INV-05**: User can view all invoices filtered by status (all, draft, sent, paid, overdue)
-- [ ] **INV-06**: User can view invoice detail with all line items
+- [x] **INV-06**: User can view invoice detail with all line items
 - [x] **INV-07**: User can download invoice as a professional PDF with tutor business details
 - [x] **INV-08**: User can delete a draft invoice
 
@@ -139,7 +139,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INV-03 | Phase 3 | Complete |
 | INV-04 | Phase 3 | Complete |
 | INV-05 | Phase 3 | Complete |
-| INV-06 | Phase 3 | Pending |
+| INV-06 | Phase 3 | Complete |
 | INV-07 | Phase 3 | Complete |
 | INV-08 | Phase 3 | Complete |
 | PAY-01 | Phase 3 | Complete |
