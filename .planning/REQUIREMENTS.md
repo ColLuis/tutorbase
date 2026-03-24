@@ -35,9 +35,9 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Invoicing
 
 - [x] **INV-01**: User can create an invoice for a student auto-populated from un-invoiced completed lessons
-- [x] **INV-02**: Invoice receives a sequential number (INV-0001) via database sequence
+- [x] **INV-02**: Invoice receives a sequential number (INV-0001) via count-based generation
 - [x] **INV-03**: User can set issue date and due date on an invoice
-- [x] **INV-04**: User can save invoice as draft or finalise (sets status to sent)
+- [x] **INV-04**: User can create invoice as draft, then mark as sent from detail page
 - [x] **INV-05**: User can view all invoices filtered by status (all, draft, sent, paid, overdue)
 - [x] **INV-06**: User can view invoice detail with all line items
 - [x] **INV-07**: User can download invoice as a professional PDF with tutor business details
