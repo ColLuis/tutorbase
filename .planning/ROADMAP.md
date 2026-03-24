@@ -68,7 +68,7 @@ Plans:
   5. Tutor can mark an invoice as paid with a payment date and method, which auto-generates a receipt record
 **Plans**: 5 plans
 Plans:
-- [ ] 03-01-PLAN.md — Install @react-pdf/renderer, DB migration for numbering functions, invoice data layer (queries + actions)
+- [x] 03-01-PLAN.md — Install @react-pdf/renderer, DB migration for numbering functions, invoice data layer (queries + actions)
 - [ ] 03-02-PLAN.md — PDF generation: InvoicePDF document component, Route Handler, and in-browser preview
 - [ ] 03-03-PLAN.md — Invoice creation flow: student detail entry point and full-page create invoice form
 - [ ] 03-04-PLAN.md — Invoice list page with status filtering, detail page with PDF preview, mark paid, and delete draft
@@ -95,7 +95,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
 | 2. Students and Scheduling | 5/5 | Complete   | 2026-03-22 |
-| 3. Invoicing and Payments | 0/5 | In progress | - |
+| 3. Invoicing and Payments | 1/5 | In Progress|  |
 | 4. Dashboard and Revenue | 0/? | Not started | - |
 
 ---

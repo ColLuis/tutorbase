@@ -26,27 +26,27 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **SCHED-01**: User can create a single lesson for a student with date, time, duration, and rate
 - [x] **SCHED-02**: User can create recurring weekly lessons for N weeks (pre-generated)
-- [ ] **SCHED-03**: User can view lessons in a weekly calendar grid
-- [ ] **SCHED-04**: User can view lessons in a chronological list grouped by day
+- [x] **SCHED-03**: User can view lessons in a weekly calendar grid
+- [x] **SCHED-04**: User can view lessons in a chronological list grouped by day
 - [x] **SCHED-05**: User can mark a lesson as completed, cancelled, or no-show via quick action
 - [x] **SCHED-06**: User can edit a single lesson (defaults to "this lesson only" for recurring)
 - [x] **SCHED-07**: Lessons pre-fill duration and rate from student defaults
 
 ### Invoicing
 
-- [ ] **INV-01**: User can create an invoice for a student auto-populated from un-invoiced completed lessons
-- [ ] **INV-02**: Invoice receives a sequential number (INV-0001) via database sequence
-- [ ] **INV-03**: User can set issue date and due date on an invoice
-- [ ] **INV-04**: User can save invoice as draft or finalise (sets status to sent)
-- [ ] **INV-05**: User can view all invoices filtered by status (all, draft, sent, paid, overdue)
+- [x] **INV-01**: User can create an invoice for a student auto-populated from un-invoiced completed lessons
+- [x] **INV-02**: Invoice receives a sequential number (INV-0001) via database sequence
+- [x] **INV-03**: User can set issue date and due date on an invoice
+- [x] **INV-04**: User can save invoice as draft or finalise (sets status to sent)
+- [x] **INV-05**: User can view all invoices filtered by status (all, draft, sent, paid, overdue)
 - [ ] **INV-06**: User can view invoice detail with all line items
 - [ ] **INV-07**: User can download invoice as a professional PDF with tutor business details
-- [ ] **INV-08**: User can delete a draft invoice
+- [x] **INV-08**: User can delete a draft invoice
 
 ### Payments
 
-- [ ] **PAY-01**: User can mark an invoice as paid with payment date and method
-- [ ] **PAY-02**: Marking as paid auto-generates a receipt record
+- [x] **PAY-01**: User can mark an invoice as paid with payment date and method
+- [x] **PAY-02**: Marking as paid auto-generates a receipt record
 
 ### Dashboard
 
@@ -129,21 +129,21 @@ Which phases cover which requirements. Updated during roadmap creation.
 | STUD-05 | Phase 2 | Complete |
 | SCHED-01 | Phase 2 | Complete |
 | SCHED-02 | Phase 2 | Complete |
-| SCHED-03 | Phase 2 | Pending |
-| SCHED-04 | Phase 2 | Pending |
+| SCHED-03 | Phase 2 | Complete |
+| SCHED-04 | Phase 2 | Complete |
 | SCHED-05 | Phase 2 | Complete |
 | SCHED-06 | Phase 2 | Complete |
 | SCHED-07 | Phase 2 | Complete |
-| INV-01 | Phase 3 | Pending |
-| INV-02 | Phase 3 | Pending |
-| INV-03 | Phase 3 | Pending |
-| INV-04 | Phase 3 | Pending |
-| INV-05 | Phase 3 | Pending |
+| INV-01 | Phase 3 | Complete |
+| INV-02 | Phase 3 | Complete |
+| INV-03 | Phase 3 | Complete |
+| INV-04 | Phase 3 | Complete |
+| INV-05 | Phase 3 | Complete |
 | INV-06 | Phase 3 | Pending |
 | INV-07 | Phase 3 | Pending |
-| INV-08 | Phase 3 | Pending |
-| PAY-01 | Phase 3 | Pending |
-| PAY-02 | Phase 3 | Pending |
+| INV-08 | Phase 3 | Complete |
+| PAY-01 | Phase 3 | Complete |
+| PAY-02 | Phase 3 | Complete |
 | DASH-01 | Phase 4 | Pending |
 | DASH-02 | Phase 4 | Pending |
 | DASH-03 | Phase 4 | Pending |
