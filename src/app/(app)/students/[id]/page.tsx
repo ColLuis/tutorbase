@@ -66,8 +66,11 @@ export default async function StudentDetailPage({ params }: { params: Promise<{ 
           </p>
         )}
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 flex-wrap">
         <Button variant="outline" render={<Link href={`/students/${id}/edit`}>Edit</Link>} />
+        {student.is_active && (
+          <Button render={<Link href={`/invoices/new?studentId=${id}`}>Create Invoice</Link>} />
+        )}
         {student.is_active && (
           <DeactivateButton studentId={id} studentName={student.name} />
         )}
