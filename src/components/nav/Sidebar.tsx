@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { logout } from '@/lib/actions/auth'
 import { cn } from '@/lib/utils'
+import { Home, Users, Calendar, FileText, TrendingUp } from 'lucide-react'
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/students', label: 'Students' },
-  { href: '/schedule', label: 'Schedule' },
-  { href: '/invoices', label: 'Invoices' },
-  { href: '/revenue', label: 'Revenue' },
+  { href: '/', label: 'Home', icon: Home },
+  { href: '/students', label: 'Students', icon: Users },
+  { href: '/schedule', label: 'Schedule', icon: Calendar },
+  { href: '/invoices', label: 'Invoices', icon: FileText },
+  { href: '/revenue', label: 'Revenue', icon: TrendingUp },
 ]
 
 interface SidebarProps {
@@ -40,17 +41,19 @@ export default function Sidebar({ className }: SidebarProps) {
               ? pathname === '/'
               : pathname.startsWith(item.href)
 
+          const Icon = item.icon
           return (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                'flex items-center min-h-[44px] px-4 text-sm font-medium transition-colors',
+                'flex items-center gap-3 min-h-[44px] px-4 text-sm font-medium transition-colors',
                 isActive
                   ? 'bg-accent text-accent-foreground'
                   : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
               )}
             >
+              <Icon className="size-4 shrink-0" />
               {item.label}
             </Link>
           )
