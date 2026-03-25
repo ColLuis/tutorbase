@@ -88,8 +88,8 @@ Plans:
 **Plans**: 4 plans
 Plans:
 - [x] 04-01-PLAN.md — Data layer: dashboard and revenue query functions with timezone-aware aggregation
-- [ ] 04-02-PLAN.md — Dashboard page: today's lessons, metric cards, quick actions, schedule deep-link
-- [ ] 04-03-PLAN.md — Revenue page: monthly breakdown table, per-student sortable table, year navigation
+- [x] 04-02-PLAN.md — Dashboard page: today's lessons, metric cards, quick actions, schedule deep-link
+- [x] 04-03-PLAN.md — Revenue page: monthly breakdown table, per-student sortable table, year navigation
 - [ ] 04-04-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ---
@@ -101,7 +101,7 @@ Plans:
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
 | 2. Students and Scheduling | 5/5 | Complete   | 2026-03-22 |
 | 3. Invoicing and Payments | 3/5 | In Progress|  |
-| 4. Dashboard and Revenue | 1/4 | In Progress|  |
+| 4. Dashboard and Revenue | 3/4 | In Progress|  |
 
 ---
 
