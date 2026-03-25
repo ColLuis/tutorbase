@@ -52,7 +52,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **DASH-01**: Dashboard shows today's lessons with student name, time, and status
 - [x] **DASH-02**: Dashboard shows weekly lesson count, unpaid invoice count/total, monthly and yearly revenue
-- [ ] **DASH-03**: Dashboard has quick action buttons for Add Lesson, Create Invoice, Add Student
+- [x] **DASH-03**: Dashboard has quick action buttons for Add Lesson, Create Invoice, Add Student
 
 ### Revenue
 
@@ -146,7 +146,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PAY-02 | Phase 3 | Complete |
 | DASH-01 | Phase 4 | Complete |
 | DASH-02 | Phase 4 | Complete |
-| DASH-03 | Phase 4 | Pending |
+| DASH-03 | Phase 4 | Complete |
 | REV-01 | Phase 4 | Complete |
 | REV-02 | Phase 4 | Complete |
 
