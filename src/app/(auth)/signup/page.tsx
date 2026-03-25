@@ -1,19 +1,19 @@
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { GraduationCap } from 'lucide-react'
+import { UserPlus } from 'lucide-react'
 import SignupForm from '@/components/auth/SignupForm'
 
 export default function SignupPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-indigo-50 via-background to-violet-50">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-emerald-50 via-background to-teal-50">
       <Card className="w-full max-w-sm shadow-lg border-0 ring-1 ring-border">
         <CardHeader className="text-center pb-2">
-          <div className="mx-auto mb-3 size-12 rounded-xl bg-primary flex items-center justify-center shadow-md shadow-primary/25">
-            <GraduationCap className="size-6 text-primary-foreground" />
+          <div className="mx-auto mb-3 size-12 rounded-xl bg-emerald-600 flex items-center justify-center shadow-md shadow-emerald-600/25">
+            <UserPlus className="size-6 text-white" />
           </div>
-          <CardTitle className="text-2xl font-bold font-heading">TutorBase</CardTitle>
+          <CardTitle className="text-2xl font-bold font-heading">Get Started</CardTitle>
           <CardDescription>
-            Create an account to get started
+            Set up your tutoring dashboard in seconds
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

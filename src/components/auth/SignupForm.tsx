@@ -22,6 +22,17 @@ export default function SignupForm() {
   return (
     <form action={formAction} className="flex flex-col gap-4">
       <div className="flex flex-col gap-1.5">
+        <Label htmlFor="name">Your name</Label>
+        <Input
+          id="name"
+          name="name"
+          type="text"
+          required
+          placeholder="Jane Smith"
+          autoComplete="name"
+        />
+      </div>
+      <div className="flex flex-col gap-1.5">
         <Label htmlFor="email">Email</Label>
         <Input
           id="email"
