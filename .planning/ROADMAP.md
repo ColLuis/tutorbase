@@ -85,7 +85,12 @@ Plans:
   3. Dashboard has one-tap quick actions to add a lesson, create an invoice, and add a student
   4. Revenue page shows a monthly breakdown of lessons delivered, amounts invoiced, paid, and outstanding
   5. Revenue page shows a per-student breakdown so the tutor can see their most and least active students by revenue
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [ ] 04-01-PLAN.md — Data layer: dashboard and revenue query functions with timezone-aware aggregation
+- [ ] 04-02-PLAN.md — Dashboard page: today's lessons, metric cards, quick actions, schedule deep-link
+- [ ] 04-03-PLAN.md — Revenue page: monthly breakdown table, per-student sortable table, year navigation
+- [ ] 04-04-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ---
 
@@ -96,7 +101,7 @@ Plans:
 | 1. Foundation | 3/3 | Complete   | 2026-03-22 |
 | 2. Students and Scheduling | 5/5 | Complete   | 2026-03-22 |
 | 3. Invoicing and Payments | 3/5 | In Progress|  |
-| 4. Dashboard and Revenue | 0/? | Not started | - |
+| 4. Dashboard and Revenue | 0/4 | Not started | - |
 
 ---
 
@@ -145,4 +150,4 @@ Plans:
 ---
 
 *Roadmap created: 2026-03-22*
-*Last updated: 2026-03-24 after Phase 3 planning*
+*Last updated: 2026-03-25 after Phase 4 planning*
