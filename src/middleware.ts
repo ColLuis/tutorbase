@@ -37,15 +37,15 @@ export async function middleware(request: NextRequest) {
     isAuthenticated = false
   }
 
-  const isLoginPage = request.nextUrl.pathname === '/login'
+  const isAuthPage = request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup'
 
-  if (!isAuthenticated && !isLoginPage) {
+  if (!isAuthenticated && !isAuthPage) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  if (isAuthenticated && isLoginPage) {
+  if (isAuthenticated && isAuthPage) {
     const url = request.nextUrl.clone()
     url.pathname = '/'
     return NextResponse.redirect(url)
