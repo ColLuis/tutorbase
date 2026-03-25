@@ -8,7 +8,7 @@ export default async function ProfilePage() {
 
   return (
     <div className="p-4 md:p-6 max-w-lg mx-auto">
-      <h1 className="text-2xl font-bold mb-6">My Profile</h1>
+      <h1 className="text-2xl font-bold font-heading mb-6">My Profile</h1>
       <ProfileForm defaultValues={{ name: tutor.name, email: tutor.email }} />
     </div>
   )

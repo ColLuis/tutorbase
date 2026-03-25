@@ -8,10 +8,10 @@ export default function QuickActions() {
       <Button
         variant="outline"
         size="lg"
-        className="h-11 flex-col gap-1"
+        className="h-11 flex-col gap-1 hover:border-primary/30 hover:bg-primary/5"
         render={
           <Link href="/schedule?action=new">
-            <Plus className="size-4" />
+            <Plus className="size-4 text-primary" />
             <span>Add Lesson</span>
           </Link>
         }
@@ -19,10 +19,10 @@ export default function QuickActions() {
       <Button
         variant="outline"
         size="lg"
-        className="h-11 flex-col gap-1"
+        className="h-11 flex-col gap-1 hover:border-primary/30 hover:bg-primary/5"
         render={
           <Link href="/invoices/new">
-            <FileText className="size-4" />
+            <FileText className="size-4 text-primary" />
             <span>Create Invoice</span>
           </Link>
         }
@@ -30,10 +30,10 @@ export default function QuickActions() {
       <Button
         variant="outline"
         size="lg"
-        className="h-11 flex-col gap-1"
+        className="h-11 flex-col gap-1 hover:border-primary/30 hover:bg-primary/5"
         render={
           <Link href="/students?action=new">
-            <UserPlus className="size-4" />
+            <UserPlus className="size-4 text-primary" />
             <span>Add Student</span>
           </Link>
         }

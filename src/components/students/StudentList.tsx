@@ -62,7 +62,7 @@ export default function StudentList({ students }: StudentListProps) {
             <li key={student.id}>
               <Link
                 href={`/students/${student.id}`}
-                className="flex flex-col gap-1.5 rounded-xl border bg-card px-4 py-3 min-h-[44px] transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="flex flex-col gap-1.5 rounded-xl border bg-card px-4 py-3 min-h-[44px] shadow-sm transition-all hover:shadow-md hover:border-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-medium text-sm">{student.name}</span>
@@ -71,7 +71,7 @@ export default function StudentList({ students }: StudentListProps) {
                       <Badge variant="secondary">Inactive</Badge>
                     )}
                     {student.subject && (
-                      <Badge variant="outline">{student.subject}</Badge>
+                      <span className="inline-flex items-center rounded-full bg-indigo-50 text-indigo-600 border border-indigo-200 px-2 py-0.5 text-xs font-medium">{student.subject}</span>
                     )}
                   </div>
                 </div>

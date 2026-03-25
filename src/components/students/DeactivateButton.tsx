@@ -40,7 +40,7 @@ export default function DeactivateButton({ studentId, studentName }: DeactivateB
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger
         render={
-          <Button variant="destructive" className="min-h-[44px]">
+          <Button variant="destructive" className="min-h-[44px] w-full">
             Deactivate Student
           </Button>
         }

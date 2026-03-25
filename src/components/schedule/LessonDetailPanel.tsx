@@ -124,7 +124,7 @@ export default function LessonDetailPanel({ lesson, timezone, onClose, onEdit }:
               <Button
                 onClick={() => handleStatusUpdate('completed')}
                 disabled={isSubmitting}
-                className="w-full min-h-[44px] bg-green-600 hover:bg-green-700 text-white"
+                className="w-full min-h-[44px] bg-emerald-600 hover:bg-emerald-700 text-white"
               >
                 Mark Complete
               </Button>

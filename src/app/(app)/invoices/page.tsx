@@ -14,7 +14,7 @@ export default async function InvoicesPage({ searchParams }: InvoicesPageProps) 
   return (
     <div className="p-4 md:p-6 max-w-2xl mx-auto">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Invoices</h1>
+        <h1 className="text-2xl font-bold font-heading">Invoices</h1>
       </div>
       <InvoiceList invoices={invoices} currentStatus={status} />
     </div>

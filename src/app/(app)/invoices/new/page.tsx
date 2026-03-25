@@ -44,7 +44,7 @@ export default async function NewInvoicePage({ searchParams }: NewInvoicePagePro
         </Link>
       </div>
 
-      <h1 className="text-2xl font-bold mb-6">New Invoice for {student.name}</h1>
+      <h1 className="text-2xl font-bold font-heading mb-6">New Invoice for {student.name}</h1>
 
       {lessons.length === 0 ? (
         <div className="text-center py-12">

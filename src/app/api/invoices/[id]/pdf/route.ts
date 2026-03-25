@@ -16,7 +16,6 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
   const tutor = await getTutorForInvoice(tutorId)
 
   const pdfData: InvoicePDFData = {
-    tutor_name: tutor.name,
     invoice_number: invoice.invoice_number,
     issued_date: invoice.issued_date ?? '',
     due_date: invoice.due_date ?? '',

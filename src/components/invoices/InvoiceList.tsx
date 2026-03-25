@@ -31,12 +31,12 @@ const STATUS_TABS = [
   { value: 'overdue', label: 'Overdue' },
 ]
 
-function getStatusBadgeVariant(status: string, isOverdue: boolean): 'secondary' | 'default' | 'destructive' | 'outline' {
-  if (isOverdue) return 'destructive'
-  if (status === 'draft') return 'secondary'
-  if (status === 'sent') return 'outline'
-  if (status === 'paid') return 'default'
-  return 'secondary'
+function getStatusBadgeClass(status: string, isOverdue: boolean): string {
+  if (isOverdue) return 'bg-red-100 text-red-700 border border-red-200'
+  if (status === 'draft') return 'bg-gray-100 text-gray-600 border border-gray-200'
+  if (status === 'sent') return 'bg-indigo-100 text-indigo-700 border border-indigo-200'
+  if (status === 'paid') return 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+  return 'bg-gray-100 text-gray-600 border border-gray-200'
 }
 
 function getStatusLabel(status: string, isOverdue: boolean): string {
@@ -58,8 +58,8 @@ export default function InvoiceList({ invoices, currentStatus }: InvoiceListProp
             className={cn(
               'shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors min-h-[36px] flex items-center',
               currentStatus === tab.value
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80'
+                ? 'bg-primary text-primary-foreground shadow-sm'
+                : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-accent'
             )}
           >
             {tab.label}
@@ -84,14 +84,14 @@ export default function InvoiceList({ invoices, currentStatus }: InvoiceListProp
             const isOverdue =
               invoice.status === 'sent' && !!invoice.due_date && invoice.due_date < today
 
-            const badgeVariant = getStatusBadgeVariant(invoice.status, isOverdue)
+            const badgeClass = getStatusBadgeClass(invoice.status, isOverdue)
             const statusLabel = getStatusLabel(invoice.status, isOverdue)
 
             return (
               <li key={invoice.id}>
                 <Link
                   href={`/invoices/${invoice.id}`}
-                  className="flex flex-col gap-1.5 rounded-xl border bg-card px-4 py-3 min-h-[64px] transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="flex flex-col gap-1.5 rounded-xl border bg-card px-4 py-3 min-h-[64px] shadow-sm transition-all hover:shadow-md hover:border-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
@@ -100,7 +100,7 @@ export default function InvoiceList({ invoices, currentStatus }: InvoiceListProp
                         <span className="text-sm text-muted-foreground">{invoice.students.name}</span>
                       )}
                     </div>
-                    <Badge variant={badgeVariant}>{statusLabel}</Badge>
+                    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${badgeClass}`}>{statusLabel}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <span>

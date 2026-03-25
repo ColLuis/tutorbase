@@ -23,7 +23,7 @@ export default function BottomNav({ className }: BottomNavProps) {
   return (
     <nav
       className={cn(
-        'bg-background border-t pb-[env(safe-area-inset-bottom)]',
+        'bg-background/95 backdrop-blur-sm border-t pb-[env(safe-area-inset-bottom)]',
         className
       )}
     >
@@ -43,12 +43,12 @@ export default function BottomNav({ className }: BottomNavProps) {
               className={cn(
                 'flex flex-col items-center justify-center flex-1 min-h-[44px] min-w-[44px] py-2 text-xs font-medium transition-colors',
                 isActive
-                  ? 'text-foreground'
+                  ? 'text-primary'
                   : 'text-muted-foreground'
               )}
             >
-              <Icon className="size-5 mb-0.5" />
-              <span className="hidden sm:block">{item.label}</span>
+              <Icon className={cn('size-5 mb-0.5', isActive && 'stroke-[2.5px]')} />
+              <span>{item.label}</span>
             </Link>
           )
         })}

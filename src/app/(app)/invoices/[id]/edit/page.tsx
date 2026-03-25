@@ -16,7 +16,7 @@ export default async function EditInvoicePage({ params }: EditInvoicePageProps) 
 
   return (
     <div className="p-4 md:p-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">
+      <h1 className="text-2xl font-bold font-heading mb-6">
         Edit {invoice.invoice_number}
       </h1>
       <EditInvoiceForm invoice={invoice} invoiceId={id} />

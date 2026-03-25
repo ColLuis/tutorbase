@@ -9,7 +9,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main className="md:ml-64 pb-16 md:pb-0">
         {children}
       </main>
-      <BottomNav className="flex md:hidden fixed bottom-0 left-0 right-0" />
+      <BottomNav className="block md:hidden fixed bottom-0 left-0 right-0" />
       <Toaster position="bottom-center" />
     </div>
   )

@@ -20,7 +20,6 @@ export default async function InvoiceDetailPage({ params }: InvoiceDetailPagePro
   if (!invoice) notFound()
 
   const pdfData: InvoicePDFData = {
-    tutor_name: tutor.name,
     invoice_number: invoice.invoice_number,
     issued_date: invoice.issued_date ?? '',
     due_date: invoice.due_date ?? '',

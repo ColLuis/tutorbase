@@ -18,7 +18,7 @@ export async function getInvoices(tutorId: string, status?: string) {
   const supabase = await createClient()
   let query = supabase
     .from('invoices')
-    .select('id, invoice_number, status, issued_date, due_date, paid_date, subtotal, total, notes, created_at, students(name)')
+    .select('id, invoice_number, status, issued_date, due_date, paid_date, subtotal, total, notes, created_at, students!invoices_student_id_fkey(name)')
     .eq('tutor_id', tutorId)
     .order('created_at', { ascending: false })
 
@@ -38,7 +38,7 @@ export async function getInvoice(tutorId: string, invoiceId: string) {
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('invoices')
-    .select('id, invoice_number, status, issued_date, due_date, paid_date, subtotal, total, notes, created_at, students(name, parent_name), invoice_items(id, description, quantity, unit_price, amount, lesson_id), receipts(id, receipt_number, paid_at, amount_paid, payment_method)')
+    .select('id, invoice_number, status, issued_date, due_date, paid_date, subtotal, total, notes, created_at, students!invoices_student_id_fkey(name, parent_name), invoice_items(id, description, quantity, unit_price, amount, lesson_id), receipts(id, receipt_number, paid_at, amount_paid, payment_method)')
     .eq('tutor_id', tutorId)
     .eq('id', invoiceId)
     .single()

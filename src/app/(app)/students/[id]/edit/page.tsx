@@ -16,7 +16,7 @@ export default async function EditStudentPage({ params }: { params: Promise<{ id
 
   return (
     <div className="p-4 md:p-6 max-w-lg mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Edit Student</h1>
+      <h1 className="text-2xl font-bold font-heading mb-6">Edit Student</h1>
       <StudentForm
         mode="edit"
         studentId={id}

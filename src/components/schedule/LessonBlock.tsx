@@ -16,10 +16,10 @@ interface LessonBlockProps {
 }
 
 const statusStyles: Record<string, string> = {
-  scheduled: 'bg-blue-100 text-blue-800 border-blue-200',
-  completed: 'bg-green-100 text-green-800 border-green-200',
-  cancelled: 'bg-gray-100 text-gray-500 border-gray-200',
-  no_show: 'bg-amber-100 text-amber-800 border-amber-200',
+  scheduled: 'bg-indigo-50 text-indigo-800 border-indigo-200 hover:bg-indigo-100',
+  completed: 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100',
+  cancelled: 'bg-gray-50 text-gray-500 border-gray-200 hover:bg-gray-100',
+  no_show: 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100',
 }
 
 export default function LessonBlock({ lesson, timezone, onClick, compact = false }: LessonBlockProps) {
@@ -31,8 +31,8 @@ export default function LessonBlock({ lesson, timezone, onClick, compact = false
     <button
       onClick={() => onClick(lesson.id)}
       className={`
-        w-full text-left rounded border px-2 py-1 min-h-[44px]
-        flex flex-col justify-center transition-opacity hover:opacity-80
+        w-full text-left rounded-lg border px-2.5 py-1.5 min-h-[44px]
+        flex flex-col justify-center transition-colors
         ${colorClass}
         ${compact ? 'text-xs' : 'text-sm'}
       `}
@@ -40,7 +40,7 @@ export default function LessonBlock({ lesson, timezone, onClick, compact = false
       <span className={`font-medium leading-tight ${compact ? 'truncate block' : ''}`}>
         {studentName}
       </span>
-      <span className="opacity-75 text-xs leading-tight">{timeStr}</span>
+      <span className="opacity-70 text-xs leading-tight">{timeStr}</span>
     </button>
   )
 }

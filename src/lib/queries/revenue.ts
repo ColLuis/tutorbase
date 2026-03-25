@@ -102,7 +102,7 @@ export async function getStudentRevenue(tutorId: string, year: number): Promise<
   const [invoicesResult, lessonsResult] = await Promise.all([
     supabase
       .from('invoices')
-      .select('id, total, status, student_id, students(name)')
+      .select('id, total, status, student_id, students!invoices_student_id_fkey(name)')
       .eq('tutor_id', tutorId)
       .gte('issued_date', `${year}-01-01`)
       .lte('issued_date', `${year}-12-31`),

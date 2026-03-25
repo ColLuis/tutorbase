@@ -45,7 +45,7 @@ export async function getDashboardLessons(tutorId: string): Promise<DashboardLes
 
   const { data: todayData, error: todayError } = await supabase
     .from('lessons')
-    .select('id, scheduled_at, status, students(name)')
+    .select('id, scheduled_at, status, students!lessons_student_id_fkey(name)')
     .eq('tutor_id', tutorId)
     .gte('scheduled_at', dayStart.toISOString())
     .lte('scheduled_at', dayEnd.toISOString())
@@ -62,7 +62,7 @@ export async function getDashboardLessons(tutorId: string): Promise<DashboardLes
 
   const { data: upcomingData, error: upcomingError } = await supabase
     .from('lessons')
-    .select('id, scheduled_at, status, students(name)')
+    .select('id, scheduled_at, status, students!lessons_student_id_fkey(name)')
     .eq('tutor_id', tutorId)
     .gt('scheduled_at', dayEnd.toISOString())
     .lte('scheduled_at', lookaheadEnd.toISOString())

@@ -95,7 +95,7 @@ export default function InvoiceDetail({ invoice, pdfData, invoiceId }: InvoiceDe
           >
             &larr; Invoices
           </Link>
-          <h1 className="text-2xl font-bold">{invoice.invoice_number}</h1>
+          <h1 className="text-2xl font-bold font-heading">{invoice.invoice_number}</h1>
         </div>
         <Badge variant={getStatusBadgeVariant(invoice.status)}>
           {invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)}

@@ -1,7 +1,6 @@
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
 
 export interface InvoicePDFData {
-  tutor_name: string
   invoice_number: string
   issued_date: string
   due_date: string
@@ -116,8 +115,7 @@ export default function InvoicePDF({ invoice }: InvoicePDFProps) {
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.tutorName}>{invoice.tutor_name}</Text>
-          <Text style={styles.metaRow}>Invoice #{invoice.invoice_number}</Text>
+          <Text style={styles.tutorName}>Invoice #{invoice.invoice_number}</Text>
           <Text style={styles.metaRow}>Issued: {invoice.issued_date}</Text>
           <Text style={styles.metaRow}>Due: {invoice.due_date}</Text>
         </View>

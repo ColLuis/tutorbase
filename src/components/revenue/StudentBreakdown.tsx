@@ -48,7 +48,7 @@ export default function StudentBreakdown({ rows, year }: StudentBreakdownProps) 
       <th aria-sort={isActive ? (sortDir === 'asc' ? 'ascending' : 'descending') : undefined}>
         <button
           onClick={() => toggleSort(key)}
-          className={`flex items-center gap-1 py-3 px-2 text-sm font-bold min-h-[44px] ${align === 'right' ? 'ml-auto' : ''} ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}
+          className={`flex items-center gap-1 py-3 px-3 text-sm font-bold min-h-[44px] ${align === 'right' ? 'ml-auto' : ''} ${isActive ? 'text-primary' : 'text-muted-foreground'}`}
         >
           {label}
           {isActive && (sortDir === 'desc' ? <ChevronDown className="size-4" /> : <ChevronUp className="size-4" />)}
@@ -58,11 +58,11 @@ export default function StudentBreakdown({ rows, year }: StudentBreakdownProps) 
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto rounded-xl border bg-card shadow-sm">
       <table className="w-full text-sm">
         <caption className="sr-only">Per-student revenue breakdown for {year}</caption>
         <thead>
-          <tr className="border-b">
+          <tr className="border-b bg-muted/30">
             <SortHeader label="Student" sortKey="name" align="left" />
             <SortHeader label="Lessons" sortKey="lessons" />
             <SortHeader label="Invoiced" sortKey="invoiced" />
@@ -72,12 +72,12 @@ export default function StudentBreakdown({ rows, year }: StudentBreakdownProps) 
         </thead>
         <tbody>
           {sorted.map(row => (
-            <tr key={row.name} className="border-b last:border-0">
-              <td className="sticky left-0 bg-background py-3 px-2">{row.name}</td>
-              <td className="py-3 px-2 text-right">{row.lessons}</td>
-              <td className="py-3 px-2 text-right">{formatCurrency(row.invoiced)}</td>
-              <td className="py-3 px-2 text-right">{formatCurrency(row.paid)}</td>
-              <td className="py-3 px-2 text-right">{formatCurrency(row.outstanding)}</td>
+            <tr key={row.name} className="border-b last:border-0 hover:bg-accent/30 transition-colors">
+              <td className="sticky left-0 bg-card py-3 px-3 font-medium">{row.name}</td>
+              <td className="py-3 px-3 text-right">{row.lessons}</td>
+              <td className="py-3 px-3 text-right">{formatCurrency(row.invoiced)}</td>
+              <td className="py-3 px-3 text-right text-emerald-600 font-medium">{formatCurrency(row.paid)}</td>
+              <td className="py-3 px-3 text-right">{row.outstanding > 0 ? <span className="text-amber-600 font-medium">{formatCurrency(row.outstanding)}</span> : formatCurrency(row.outstanding)}</td>
             </tr>
           ))}
         </tbody>

@@ -122,6 +122,7 @@ function LessonForm({
   const selectedStudentName = students.find(s => s.id === selectedStudentId)?.name
 
   const onSubmit = async (values: LessonFormValues) => {
+    if (isSubmitting) return
     setIsSubmitting(true)
 
     const formData = new FormData()
@@ -166,7 +167,7 @@ function LessonForm({
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 p-4">
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 p-4" aria-busy={isSubmitting}>
       {/* Student picker (combobox — D-01) */}
       <div className="space-y-1">
         <Label>Student</Label>
