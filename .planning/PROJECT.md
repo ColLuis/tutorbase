@@ -19,18 +19,18 @@ A tutor can complete their entire weekly workflow — schedule lessons, mark the
 - [x] Week view calendar and list view for schedule with forward/backward navigation (Validated in Phase 2)
 - [x] Quick lesson status updates (completed, cancelled, no-show) without full edit (Validated in Phase 2)
 - [x] Recurring lesson editing defaults to "this lesson only" (Validated in Phase 2)
+- [x] Dashboard with today's lessons, weekly counts, unpaid invoices, revenue metrics, and quick actions (Validated in Phase 4: Dashboard and Revenue)
+- [x] Revenue page with monthly breakdown, student breakdown, and summary metrics (Validated in Phase 4: Dashboard and Revenue)
 
 ### Active
 
 <!-- Current scope. Building toward these. -->
 
 - [ ] Password-protected login with Supabase Auth (email/password, no signup page for v1)
-- [ ] Dashboard with today's lessons, weekly counts, unpaid invoices, revenue metrics, and quick actions
 - [ ] Invoice creation auto-populated from un-invoiced completed lessons, with manual line item support
 - [ ] Invoice lifecycle: draft → sent → paid, with invoice number generation (INV-0001)
 - [ ] Professional PDF invoice generation with tutor business details, line items, payment info
 - [ ] Mark as Paid flow with auto-generated receipt record and PDF
-- [ ] Revenue page with monthly breakdown, student breakdown, and summary metrics
 - [ ] Settings page for profile, business details (ABN, bank details), and invoice defaults
 - [ ] Mobile-first responsive design with bottom nav (mobile) and sidebar (desktop)
 - [ ] Row Level Security on all Supabase tables for data isolation
@@ -100,4 +100,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-22 after Phase 2 completion — Students and Scheduling*
+*Last updated: 2026-03-25 after Phase 4 completion — Dashboard and Revenue*
