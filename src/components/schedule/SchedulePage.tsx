@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { parseISO, isValid, addWeeks, subWeeks, startOfWeek, format } from 'date-fns'
 import { toZonedTime } from 'date-fns-tz'
@@ -87,6 +87,15 @@ export default function SchedulePage({ initialLessons, initialWeekStart, timezon
   const view = viewParam === 'list' ? 'list' : 'calendar'
 
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null)
+
+  // Deep-link support: auto-open lesson detail panel when navigated from dashboard
+  const lessonParam = searchParams.get('lesson')
+  useEffect(() => {
+    if (lessonParam && initialLessons.some(l => l.id === lessonParam)) {
+      setSelectedLessonId(lessonParam)
+    }
+  }, [lessonParam, initialLessons])
+
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [editLessonId, setEditLessonId] = useState<string | null>(null)
 
