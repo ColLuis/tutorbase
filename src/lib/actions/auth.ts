@@ -20,17 +20,30 @@ export async function login(formData: FormData) {
 
 export async function signup(formData: FormData) {
   const supabase = await createClient()
+  const name = formData.get('name') as string
+  const email = formData.get('email') as string
 
-  const { error } = await supabase.auth.signUp({
-    email: formData.get('email') as string,
+  const { data, error } = await supabase.auth.signUp({
+    email,
     password: formData.get('password') as string,
     options: {
-      data: { name: formData.get('name') as string },
+      data: { name },
     },
   })
 
   if (error) {
     return { error: error.message }
+  }
+
+  // Create tutor profile row
+  if (data.user) {
+    const { error: profileError } = await supabase
+      .from('tutors')
+      .insert({ id: data.user.id, name, email })
+
+    if (profileError) {
+      return { error: profileError.message }
+    }
   }
 
   redirect('/')
