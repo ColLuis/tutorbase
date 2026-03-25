@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-24T11:15:14.145Z"
+last_updated: "2026-03-25T07:24:35.783Z"
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 13
-  completed_plans: 13
+  total_plans: 17
+  completed_plans: 14
 ---
 
 # Project State: TutorBase
@@ -29,8 +29,8 @@ progress:
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
+Phase: 04 (dashboard-and-revenue) — EXECUTING
+Plan: 2 of 4
 
 ## Phase Summary
 
@@ -65,6 +65,7 @@ Plan: Not started
 | Phase 03-invoicing-and-payments P02 | 4 | 2 tasks | 3 files |
 | Phase 03-invoicing-and-payments P03 | 4 | 1 tasks | 3 files |
 | Phase 03-invoicing-and-payments P04 | 15 | 2 tasks | 8 files |
+| Phase 04-dashboard-and-revenue P01 | 10 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,9 @@ Plan: Not started
 | useMediaQuery for portal component branching | Drawer and Sheet are both portal components — CSS display:none does not suppress their mount; conditionally render only one via useMediaQuery hook |
 | renderToBuffer cast to any for @react-pdf/renderer | DocumentProps type does not match FunctionComponentElement; runtime works correctly — cast avoids TS error without altering behaviour |
 | Buffer cast to unknown as BodyInit in Route Handlers | Node.js Buffer not directly assignable to Web API BodyInit in TS strict mode; Next.js handles Buffer correctly at runtime |
+| fromZonedTime for UTC DB boundaries (04-01) | Use fromZonedTime to convert local day boundaries to UTC for Supabase queries; toZonedTime is for display only |
+| paid_date attribution for monthly revenue (04-01) | Monthly amountPaid attributed to paid_date month, not issued_date month — invoice may be issued in March but paid in April |
+| Draft invoices excluded from amountInvoiced (04-01) | Only sent and paid invoices represent billed work; drafts excluded from revenue aggregation |
 
 ### Critical Pitfalls to Avoid
 
@@ -127,5 +131,5 @@ None.
 ---
 
 *State initialized: 2026-03-22*
-*Last updated: 2026-03-24 - Completed 03-04-PLAN.md: Invoice UI — list page, detail page, mark paid, delete draft, navigation*
-*Stopped at: Completed 03-invoicing-and-payments/03-04-PLAN.md — invoice list page with status filtering, invoice detail with PDF preview and conditional actions, Sidebar and BottomNav wired with FileText icon*
+*Last updated: 2026-03-25 - Completed 04-01-PLAN.md: Dashboard and revenue data layer — getDashboardLessons, getDashboardStats, getMonthlyRevenue, getStudentRevenue*
+*Stopped at: Completed 04-dashboard-and-revenue/04-01-PLAN.md — dashboard query functions with today/fallback logic, revenue monthly and per-student aggregation*
