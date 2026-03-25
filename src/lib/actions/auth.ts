@@ -1,5 +1,6 @@
 'use server'
 
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
@@ -35,9 +36,13 @@ export async function signup(formData: FormData) {
     return { error: error.message }
   }
 
-  // Create tutor profile row
+  // Create tutor profile row using service role to bypass RLS
   if (data.user) {
-    const { error: profileError } = await supabase
+    const adminClient = createSupabaseClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    )
+    const { error: profileError } = await adminClient
       .from('tutors')
       .insert({ id: data.user.id, name, email })
 
