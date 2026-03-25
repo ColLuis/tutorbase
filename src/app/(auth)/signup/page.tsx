@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { GraduationCap } from 'lucide-react'
-import LoginForm from '@/components/auth/LoginForm'
+import SignupForm from '@/components/auth/SignupForm'
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-indigo-50 via-background to-violet-50">
       <Card className="w-full max-w-sm shadow-lg border-0 ring-1 ring-border">
@@ -13,15 +13,15 @@ export default function LoginPage() {
           </div>
           <CardTitle className="text-2xl font-bold font-heading">TutorBase</CardTitle>
           <CardDescription>
-            Sign in to manage your tutoring business
+            Create an account to get started
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <LoginForm />
+          <SignupForm />
           <p className="text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{' '}
-            <Link href="/signup" className="text-primary hover:underline">
-              Sign up
+            Already have an account?{' '}
+            <Link href="/login" className="text-primary hover:underline">
+              Sign in
             </Link>
           </p>
         </CardContent>
