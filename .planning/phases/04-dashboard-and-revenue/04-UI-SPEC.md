@@ -53,14 +53,16 @@ Exceptions:
 
 All sizes from the established codebase pattern. Confirmed from grep of existing app pages.
 
+Two weights only: `font-normal` (400) for body, labels, and secondary text; `font-bold` (700) for all headings and prominent values.
+
 | Role | Size | Weight | Line Height | Tailwind Class | Source |
 |------|------|--------|-------------|----------------|--------|
 | Display (page h1) | 24px (text-2xl) | 700 (font-bold) | 1.2 (leading-tight) | `text-2xl font-bold` | Confirmed — all existing page h1s use this |
-| Heading (section labels, card titles) | 16px (text-base) | 500 (font-medium) | 1.4 (leading-snug) | `text-base font-medium` | Confirmed — CardTitle in card.tsx |
+| Heading (section labels, card titles) | 16px (text-base) | 700 (font-bold) | 1.4 (leading-snug) | `text-base font-bold` | Revised from font-medium — collapsed to 2-weight scale |
 | Body | 16px (text-base) | 400 (font-normal) | 1.5 (leading-normal) | `text-base` | Default — established in globals.css body |
 | Label / small | 14px (text-sm) | 400 (font-normal) | 1.4 | `text-sm` | Confirmed — CardDescription, muted text throughout app |
 
-Metric card values (the large number displayed in each stat card): 20px (text-xl), weight 600 (font-semibold). This gives visual prominence without overriding the page h1 hierarchy.
+Metric card values (the large number displayed in each stat card): 20px (text-xl), weight 700 (font-bold). Revised from font-semibold — collapsed to 2-weight scale. Bold weight at text-xl provides sufficient visual prominence within the 2-weight constraint.
 
 ---
 
@@ -140,7 +142,7 @@ Outer wrapper: `p-4 md:p-6 max-w-2xl mx-auto` — matches all existing pages.
 
 ### Metric Card Internal Layout
 
-Each MetricCard: `Card` component containing icon (top-right, 16px, muted-foreground), large value (text-xl font-semibold), unit/sub-label (text-sm text-muted-foreground).
+Each MetricCard: `Card` component containing icon (top-right, 16px, muted-foreground), large value (text-xl font-bold), unit/sub-label (text-sm text-muted-foreground).
 
 ### Revenue Page (`src/app/(app)/revenue/page.tsx`)
 
@@ -151,14 +153,14 @@ Section order: Monthly breakdown first (D-09 says "current financial context"), 
 ```
 ┌─────────────────────────────────────────┐
 │  h1: "Revenue"                          │  ← text-2xl font-bold
-│  Year nav: < 2026 >                     │  ← flex items-center gap-2, year in font-semibold
+│  Year nav: < 2026 >                     │  ← flex items-center gap-2, year in font-bold
 ├─────────────────────────────────────────┤
-│  h2: "Monthly Breakdown"                │  ← text-base font-medium mt-6 mb-3
+│  h2: "Monthly Breakdown"                │  ← text-base font-bold mt-6 mb-3
 │  Scrollable table (overflow-x-auto)     │  ← MonthlyBreakdown
 │  Month | Lessons | Hours | Invoiced     │
 │  | Paid | Outstanding                   │
 ├─────────────────────────────────────────┤
-│  h2: "By Student"                       │  ← text-base font-medium mt-8 mb-3
+│  h2: "By Student"                       │  ← text-base font-bold mt-8 mb-3
 │  Sortable table (overflow-x-auto)       │  ← StudentBreakdown ('use client')
 │  Student | Lessons | Invoiced | Paid    │
 │  | Outstanding                          │
@@ -174,7 +176,7 @@ Both revenue tables use `overflow-x-auto` wrapper for mobile horizontal scroll. 
 Desktop (`md:`): all columns visible inline.
 Mobile: horizontal scroll. Sticky first column (`sticky left-0 bg-background`) for student name / month label so users retain context while scrolling right.
 
-Column header tap targets: `<button>` elements with `py-3 px-2 text-left text-sm font-medium text-muted-foreground min-h-[44px]` for sort headers. Non-sortable headers use `<th>` with same padding.
+Column header tap targets: `<button>` elements with `py-3 px-2 text-left text-sm font-bold text-muted-foreground min-h-[44px]` for sort headers. Non-sortable headers use `<th>` with same padding.
 
 ---
 
@@ -198,7 +200,7 @@ Column header tap targets: `<button>` elements with `py-3 px-2 text-left text-sm
 | Revenue page h1 | "Revenue" | Default — matches nav label |
 | Revenue monthly section heading | "Monthly Breakdown" | Default |
 | Revenue per-student section heading | "By Student" | Default — concise, matches analytic context |
-| Revenue year navigation label | "Calendar Year [YYYY]" | RESEARCH.md open question 2 — calendar year, not financial year |
+| Revenue year navigation label | "[YYYY]" e.g. "2026" | Bare year — aligns with wireframe `< 2026 >` layout |
 | Revenue monthly table: future months with no data | Show row with dashes ("—") for numeric columns | Preserves full 12-row structure even for future months |
 | Empty state — no lessons today AND no upcoming lessons | Heading: "No upcoming lessons" / Body: "Schedule a new lesson to get started." | Claude's discretion |
 | Empty state — revenue page, no invoices for year | Heading: "No revenue data for [year]" / Body: "Revenue appears here once you create and send invoices." | Claude's discretion |
@@ -233,8 +235,8 @@ Tap target: full row, `min-h-[44px]`, `flex items-center` layout. No status acti
 
 - Default year: current calendar year (`new Date().getFullYear()`).
 - Year read from `searchParams.year` by Server Component; if absent, defaults to current year.
-- Left chevron (`<`) always shown; links to `?year=[year-1]`.
-- Right chevron (`>`) shown only if `year < currentYear`; hidden for current year (no future data).
+- Left chevron (`<`) always shown; renders as `<Link>` to `?year=[year-1]` with `aria-label="Previous year"`.
+- Right chevron (`>`) shown only if `year < currentYear`; hidden for current year (no future data). Renders as `<Link>` to `?year=[year+1]` with `aria-label="Next year"`.
 - Navigation is a server-side page reload (Next.js Link), not client state — no `'use client'` needed on the page.
 
 ### Loading States
@@ -266,6 +268,7 @@ Per CLAUDE.md constraints (WCAG AA):
 - Empty states include an `<h2>` heading so screen readers land on meaningful text.
 - Revenue tables include `<caption>` with the current year context: e.g. `<caption className="sr-only">Monthly revenue breakdown for 2026</caption>`.
 - Color is never the sole differentiator: sort direction uses both icon shape AND column label weight change.
+- Year navigation chevrons carry explicit labels: `aria-label="Previous year"` on `<ChevronLeft />` button, `aria-label="Next year"` on `<ChevronRight />` button.
 
 ---
 
