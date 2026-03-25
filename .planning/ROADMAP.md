@@ -90,7 +90,7 @@ Plans:
 - [x] 04-01-PLAN.md — Data layer: dashboard and revenue query functions with timezone-aware aggregation
 - [x] 04-02-PLAN.md — Dashboard page: today's lessons, metric cards, quick actions, schedule deep-link
 - [x] 04-03-PLAN.md — Revenue page: monthly breakdown table, per-student sortable table, year navigation
-- [ ] 04-04-PLAN.md — Human verify checkpoint: end-to-end functional verification
+- [x] 04-04-PLAN.md — Human verify checkpoint: end-to-end functional verification
 
 ---
 
